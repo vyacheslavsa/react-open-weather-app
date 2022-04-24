@@ -10,8 +10,9 @@ export default function Currentweather({ data }) {
       'format_two': new Date(number * 1000).toISOString(),
       'format_three': new Date(number * 1000).toLocaleDateString("ru-RU"),
     }
-
   }
+
+  console.log(data);
 
   return (
     <div>

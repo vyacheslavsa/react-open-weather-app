@@ -1,11 +1,5 @@
 import axios from "axios";
-export const actionsArray = [
-  { getCurrentWeather: "GET_DATA_WEATHER" },//получить текущую погоду
-]
-
-// const [dataWeather, setDataWeather] = useState({})
-// const isLoading = !Object.keys(dataWeather).length;
-
+import { detectError, getWeather, isLoading } from "../redusers/reduser";
 
 // const getData = async () => {
 //   // Делаем запрос пользователя с данным ID
@@ -26,23 +20,16 @@ export const actionsArray = [
 const lat = '47.221385'
 const lon = '39.7114196'
 
-
-// useEffect(() => {
-//   getDataWeather()
-// }, [])
-
-// console.log(isLoading)
-
-export const getDataCurrentWeather = async () => {
-
-  await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}8&lon=${lon}&appid=5fb6b5d7b3e1b8e74a3f2ecca13358e5&units=metric&lang=RU`)
-    .then((response) => {
-      return { type: actionsArray.getCurrentWeather, payload: response.data }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-
-
-  
+export const getDataCurrentWeather = () => {
+  return dispatch => {
+    dispatch(isLoading(true))
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}8&lon=${lon}&appid=5fb6b5d7b3e1b8e74a3f2ecca13358e5&units=metric&lang=RU`)
+      .then((response) => {
+        dispatch(getWeather(response.data))
+        dispatch(isLoading(false))
+      })
+      .catch((error) => {
+        dispatch(detectError(error))
+      });
+  }
 }

@@ -1,12 +1,13 @@
 import { combineReducers, createStore, applyMiddleware } from "redux";
-import { GetReduser } from '../redusers/GetReduser'
+import { reduser } from '../redusers/reduser'
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk'
 
-const Reduser = combineReducers({//combineReducers функция которая объединяет редюсеры
-  getWeather: GetReduser
+const combine = combineReducers({//combineReducers функция которая объединяет редюсеры
+  data: reduser
 });
 
 export const store = createStore(
-  Reduser,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(applyMiddleware(thunk))//привязываем redux-dev-tools
+  combine,
+  composeWithDevTools(applyMiddleware(thunk))//привязываем redux-dev-tools
 );

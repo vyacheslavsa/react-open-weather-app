@@ -1,8 +1,15 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import styles from './Content.module.scss'
 
-export default function Content(data) {
+export default function Content() {
+  const isLoading = useSelector(state => state.data.loading)
 
-  console.log(data)
+  
+
+
+
+  
 
   // const iconLink = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
 
@@ -15,7 +22,9 @@ export default function Content(data) {
   // }
 
   return (
-    <div>content</div>
+
+    <div className={styles.root}>content</div>
+
     // <div>
     //   <div>Город: {data.name}</div>
     //   <div>Температура: {data.main.temp}</div>
@@ -28,3 +37,5 @@ export default function Content(data) {
     // </div>
   )
 }
+
+

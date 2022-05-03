@@ -1,15 +1,15 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from './Content.module.scss'
+import ImageCity from '../imageCity'
 
 export default function Content() {
-  const isLoading = useSelector(state => state.data.loading)
+  // const dispatch = useDispatch()
+  const dataCurrentWeather = useSelector(state => state.data.currentWeather)
+  const isError = useSelector(state => state.data.errors)
 
-  
-
-
-
-  
+  console.log(dataCurrentWeather)
+  console.log(isError)
 
   // const iconLink = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
 
@@ -22,10 +22,11 @@ export default function Content() {
   // }
 
   return (
-
-    <div className={styles.root}>content</div>
-
-    // <div>
+    <div>
+      <ImageCity/>
+      content
+    </div>
+    // <div className={styles.root}>
     //   <div>Город: {data.name}</div>
     //   <div>Температура: {data.main.temp}</div>
     //   <div>Атмосферное давление: {data.main.pressure}</div>

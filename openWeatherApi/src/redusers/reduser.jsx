@@ -20,7 +20,7 @@ export const reduser = (state = defaultState, action) => {
     case allActions.GET_DATA_WEATHER:
       return { ...state, currentWeather: action.payload };
     case allActions.DETECT_ERROR:
-      return { ...state, errors: action.payload };
+      return { ...state, errors: action.payload.message };
     case allActions.CHANGE_LOADING:
       return { ...state, loading: action.payload };
     default:

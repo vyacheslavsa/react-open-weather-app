@@ -1,4 +1,13 @@
 #root{
   border: 1px solid black;
   height: 98vh;
+
+  background: url("https://upload.wikimedia.org/wikipedia/commons/6/6f/Rostov_City_Hall_2021.jpg") no-repeat;
+
+
+  -moz-background-size: 100%; /* Firefox 3.6+ */
+  -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+  -o-background-size: 100%; /* Opera 9.6+ */
+  background-size: 100%; /* Современные браузеры */
+  box-sizing: border-box;
 }

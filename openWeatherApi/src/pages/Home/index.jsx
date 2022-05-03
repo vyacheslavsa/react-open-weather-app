@@ -24,9 +24,9 @@ export default function Home() {
 
   return (
     <>
-      <button onClick={()=>getData()}>Получить данные</button>
       <ButtonAppBar />
       <Content/>
+      <button onClick={()=>getData()}>Получить данные</button>
     </>
   )
 }

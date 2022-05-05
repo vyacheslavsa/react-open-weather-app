@@ -19,7 +19,7 @@ export default function Content() {
   // }
 
   return (
-    <div></div>
+    <div className={styles.content}>content</div>
     // <div>
     //   <div>Город: {data.name}</div>
     //   <div>Температура: {data.main.temp}</div>

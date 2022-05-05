@@ -1,0 +1,33 @@
+.head{
+  border: 1px solid;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 50px;
+  padding-right: 50px;
+
+  .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: 600;
+
+    &>span{
+      font-size: 35px;
+      margin-right: 10px;
+    }
+  }
+
+  .rightMenu{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 400px;
+
+    & > div{
+      cursor: pointer;
+      font-weight: 600;
+    }
+  }
+}

@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { getDataCurrentWeather } from '../../actions/actions'
-import ButtonAppBar from '../../components/Header'
+import UpMenu from '../../components/UpMenu/index'
 import Content from '../../components/Content'
 
 export default function Home() {
 
   const dispatch = useDispatch()
-  
+
 
   // useEffect(() => {
   //   dispatch(getDataCurrentWeather())
@@ -23,10 +23,10 @@ export default function Home() {
   }
 
   return (
-    <>
-      <ButtonAppBar />
-      <Content/>
-      <button onClick={()=>getData()}>Получить данные</button>
-    </>
+    <div className={StyleSheet.page}>
+      <UpMenu />
+      <Content />
+      <button onClick={() => getData()}>Получить данные</button>
+    </div>
   )
 }

@@ -1,3 +1,17 @@
 .content {
-  border: 1px solid;
+  width: -webkit-fill-available;
+  height: 90vh;
+  background-color: rgb(201, 218, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .containerWeather{
+    width: 700px;
+    height: 700px;
+    background-color: rgb(227, 227, 227);
+    border-radius: 50px;
+    box-shadow: 0px 0px 150px #74a9ff;
+    padding: 10px;
+  }
 }

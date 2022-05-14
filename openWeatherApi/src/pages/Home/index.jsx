@@ -1,12 +1,18 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import { getDataCurrentWeather } from '../../actions/actions'
 import UpMenu from '../../components/UpMenu/index'
 import Content from '../../components/Content'
+import styles from './Home.module.scss'
 
 export default function Home() {
 
   const dispatch = useDispatch()
+  const data = useSelector(state => state.data.currentWeather)
+  const isError = useSelector(state => state.data.errors)
+  const isLoading = useSelector(state => state.data.loading)
+
+  console.log(data)
 
 
   // useEffect(() => {
@@ -21,12 +27,22 @@ export default function Home() {
   const getData = () => {
     dispatch(getDataCurrentWeather())
   }
+  
+
+  // const iconLink = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png` || null
+
+  // const converterDate = (number) => {
+  //   return {
+  //     'format_one': new Date(number * 1000),
+  //     'format_two': new Date(number * 1000).toISOString(),
+  //     'format_three': new Date(number * 1000).toLocaleDateString("ru-RU"),
+  //   }
+  // }
 
   return (
-    <div className={StyleSheet.page}>
-      <UpMenu />
-      <Content />
-      <button onClick={() => getData()}>Получить данные</button>
+    <div className={styles.pageHome}>
+      <UpMenu getData={()=>getData()}/>
+      <Content/>
     </div>
   )
 }

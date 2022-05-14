@@ -5,7 +5,7 @@
   justify-content: space-between;
   padding-left: 50px;
   padding-right: 50px;
-  background:-webkit-linear-gradient(85deg, rgba(255, 255, 0, 1) 0%, rgba(238, 130, 238, 1) 100%);
+  background: #0B7FE6;
   box-shadow: 0 0 20px rgb(108, 108, 108);
   z-index: 1;
   
@@ -15,13 +15,14 @@
     align-items: center;
     
     & > div{
-      color: black;
+      color: white;
       font-weight: 600;
     }
 
     & > span{
       font-size: 35px;
       margin-right: 10px;
+      color: white;
     }
   }
 
@@ -34,7 +35,7 @@
     & > div{
       cursor: pointer;
       font-weight: 600;
-      color: black;
+      color: white;
     }
   }
 }

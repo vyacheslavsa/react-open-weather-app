@@ -8,11 +8,9 @@ import styles from './Home.module.scss'
 export default function Home() {
 
   const dispatch = useDispatch()
-  const data = useSelector(state => state.data.currentWeather)
+  const data = useSelector(state => state.data.currentWeather) || {}
   const isError = useSelector(state => state.data.errors)
   const isLoading = useSelector(state => state.data.loading)
-
-  console.log(data)
 
 
   // useEffect(() => {
@@ -42,7 +40,7 @@ export default function Home() {
   return (
     <div className={styles.pageHome}>
       <UpMenu getData={()=>getData()}/>
-      <Content/>
+      <Content data={data} errors={isError} loading={isLoading}/>
     </div>
   )
 }

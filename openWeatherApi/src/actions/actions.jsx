@@ -5,7 +5,7 @@ const lat = '47.221385'
 const lon = '39.7114196'
 const APIkey = '5fb6b5d7b3e1b8e74a3f2ecca13358e5'
 const format = 'metric'
-const lang = 'RU'
+const lang = 'EN'
 
 // https://api.openweathermap.org/data/2.5/weather?lat=${lat}8&lon=${lon}&appid=${APIkey}&units=metric&lang=EN
 

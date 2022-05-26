@@ -1,7 +1,10 @@
 import * as React from 'react';
 import styles from './UpMenu.module.scss'
+import {getDataCurrentWeather} from "../../actions/actions";
+import {useDispatch} from "react-redux";
 
-export default function UpMenu({getData}) {
+export default function UpMenu() {
+    const dispatch = useDispatch()
   
   return (
     <div className={styles.head}>
@@ -12,7 +15,7 @@ export default function UpMenu({getData}) {
         <div>Your Weather</div>
       </div>
       <div className={styles.rightMenu}>
-        <div onClick={()=>getData()}>Get Data</div>
+        <div onClick={()=>dispatch(getDataCurrentWeather())}>Get Data</div>
         <div>About</div>
         <div>Settings</div>
         <div>Contact</div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import { getDataCurrentWeather } from '../../actions/actions'
 import UpMenu from '../../components/UpMenu/index'
@@ -9,22 +9,25 @@ export default function Home() {
 
   const dispatch = useDispatch()
   const data = useSelector(state => state.data.currentWeather) || {}
-  const isError = useSelector(state => state.data.errors)
+  const isError = useSelector(state => state.data.errors) || {}
   const isLoading = useSelector(state => state.data.loading)
+
+
+
 
 
   // useEffect(() => {
   //   dispatch(getDataCurrentWeather())
-  // })
+  // },[])
+
+
 
   // const addCash = () => {
   //   //функция изменения параметра cash+1
   //   dispatch({ type: "ADD_CASH", payload: 1 });
   // }
 
-  const getData = () => {
-    dispatch(getDataCurrentWeather())
-  }
+
   
 
   // const iconLink = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png` || null
@@ -39,7 +42,7 @@ export default function Home() {
 
   return (
     <div className={styles.pageHome}>
-      <UpMenu getData={()=>getData()}/>
+      <UpMenu/>
       <Content data={data} errors={isError} loading={isLoading}/>
     </div>
   )

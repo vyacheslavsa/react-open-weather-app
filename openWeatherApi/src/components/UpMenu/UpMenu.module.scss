@@ -32,10 +32,11 @@
     align-items: center;
     width: 400px;
 
-    & > div{
+    & > a{
       cursor: pointer;
       font-weight: 600;
       color: white;
+      text-decoration: none;
     }
   }
 }

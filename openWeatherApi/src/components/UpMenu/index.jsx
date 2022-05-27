@@ -1,10 +1,9 @@
 import * as React from 'react';
 import styles from './UpMenu.module.scss'
-import {getDataCurrentWeather} from "../../actions/actions";
-import {useDispatch} from "react-redux";
+import {Link} from "react-router-dom";
+
 
 export default function UpMenu() {
-    const dispatch = useDispatch()
   
   return (
     <div className={styles.head}>
@@ -15,10 +14,10 @@ export default function UpMenu() {
         <div>Your Weather</div>
       </div>
       <div className={styles.rightMenu}>
-        <div onClick={()=>dispatch(getDataCurrentWeather())}>Get Data</div>
-        <div>About</div>
-        <div>Settings</div>
-        <div>Contact</div>
+          <Link to='/home'>Get Data</Link>
+          <div>About</div>
+          <Link to='/settings'>Settings</Link>
+          <div>Contact</div>
       </div>
     </div>
   );

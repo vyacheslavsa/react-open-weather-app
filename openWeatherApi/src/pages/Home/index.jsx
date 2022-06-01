@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import { getDataCurrentWeather } from '../../actions/actions'
-import UpMenu from '../../components/UpMenu/index'
 import Content from '../../components/Content'
-import styles from './Home.module.scss'
+import MainLoyout from "../../components/MainLoyout";
 
-export default function Home() {
+const Home = () => {
 
   const dispatch = useDispatch()
   const data = useSelector(state => state.data.currentWeather) || {}
@@ -25,9 +24,10 @@ export default function Home() {
 
 
   return (
-    <div className={styles.pageHome}>
-      <UpMenu/>
+    <MainLoyout>
       <Content data={data} errors={isError} loading={isLoading}/>
-    </div>
+    </MainLoyout>
   )
 }
+
+export default Home

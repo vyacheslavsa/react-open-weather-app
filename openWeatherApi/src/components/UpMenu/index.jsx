@@ -14,10 +14,10 @@ export default function UpMenu() {
         <div>Your Weather</div>
       </div>
       <div className={styles.rightMenu}>
-          <Link to='/home'>Get Data</Link>
-          <div>About</div>
+          <Link to='/home'>Home</Link>
+          <Link to='/About'><div>About</div></Link>
           <Link to='/settings'>Settings</Link>
-          <div>Contact</div>
+          <Link to='/Contact'><div>Contact</div></Link>
       </div>
     </div>
   );

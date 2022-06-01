@@ -1,9 +1,10 @@
 import React from 'react'
+import MainLoyout from "../../components/MainLoyout";
 
 export default function Settings() {
   return (
-    <div>
-      Settings
-    </div>
+      <MainLoyout>
+          Settings
+      </MainLoyout>
   )
 }

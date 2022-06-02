@@ -9,7 +9,8 @@ const allActions = {
   ADD_CASH: 'ADD_CASH',
   GET_DATA_WEATHER: 'GET_DATA_WEATHER',
   DETECT_ERROR: 'DETECT_ERROR',
-  CHANGE_LOADING: 'CHANGE_LOADING'
+  CHANGE_LOADING: 'CHANGE_LOADING',
+  GET_CITY: 'GET_CITY'
 }
 
 //action = {type:"", payload:""} - формат объекта type - action значение ,payload - новое значение
@@ -23,6 +24,8 @@ export const reduser = (state = defaultState, action) => {
       return { ...state, errors: action.payload.message };
     case allActions.CHANGE_LOADING:
       return { ...state, loading: action.payload };
+    case allActions.GET_CITY:
+      return { ...state, currentCity: action.payload };
     default:
       return state;
   }
@@ -31,3 +34,4 @@ export const reduser = (state = defaultState, action) => {
 export const getWeather = (payload) => ({ type: allActions.GET_DATA_WEATHER, payload })
 export const detectError = (payload) => ({ type: allActions.DETECT_ERROR, payload })
 export const isLoading = (payload) => ({ type: allActions.CHANGE_LOADING, payload })
+export const getCity = (payload) => ({ type: allActions.GET_CITY, payload })

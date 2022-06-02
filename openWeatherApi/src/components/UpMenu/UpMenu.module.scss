@@ -1,4 +1,4 @@
-.head{
+.head {
   width: -webkit-fill-available;
   height: 10vh;
   display: flex;
@@ -9,30 +9,37 @@
   box-shadow: 0 0 20px rgb(108, 108, 108);
   z-index: 1;
   
-  .logo{
+  .logo {
     display: flex;
     justify-content: center;
     align-items: center;
     
-    & > div{
+    & > div {
       color: white;
       font-weight: 600;
     }
 
-    & > span{
+    & > span {
       font-size: 35px;
       margin-right: 10px;
       color: white;
     }
   }
 
-  .rightMenu{
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .rightMenu {
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 400px;
 
-    & > a{
+    & > a {
       cursor: pointer;
       font-weight: 600;
       color: white;

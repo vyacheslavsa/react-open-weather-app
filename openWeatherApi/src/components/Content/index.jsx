@@ -4,7 +4,9 @@ import './style.scss'
 import moment from "moment";
 
 
-export default function Content({data, errors, loading}) {
+export default function Content({data, errors, loading,currentCity}) {
+
+    console.log(loading)
 
     const descriptionWeather =
         data?.current?.weather[0]?.description[0].toUpperCase()+data?.current?.weather[0]?.description.slice(1);
@@ -18,7 +20,7 @@ export default function Content({data, errors, loading}) {
         <div className={styles.weatherPanel}>
             <div className={styles.currentWeather}>
                 <div className={styles.leftInfo}>
-                    <div>Rostov-on-Don</div>
+                    <div>{currentCity[0]?.name}</div>
                     <div>{descriptionWeather}</div>
                     <div>Today  {moment.unix(data?.current?.dt).format('Do MMMM')}</div>
                 </div>

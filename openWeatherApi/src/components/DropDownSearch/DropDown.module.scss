@@ -1,0 +1,24 @@
+.main {
+  position: absolute;
+  top: 12vh;
+  left: 0;
+  box-shadow: 0 0 5px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+
+  .name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid #c9c9c9;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #c9c9c9;
+    }
+  }
+
+}

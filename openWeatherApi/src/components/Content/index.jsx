@@ -6,17 +6,14 @@ import moment from "moment";
 
 export default function Content({data, errors, loading,currentCity}) {
 
-    console.log(loading)
-
-    const descriptionWeather =
-        data?.current?.weather[0]?.description[0].toUpperCase()+data?.current?.weather[0]?.description.slice(1);
+    const descriptionWeather = data?.current?.weather[0]?.description[0].toUpperCase()+data?.current?.weather[0]?.description.slice(1);
     const mmHgPressure = Math.round(data?.current?.pressure * 0.75006375541921);
 
     if(Object.keys(errors).length > 0) return <div>{errors}</div>
 
   return (
     <div className={styles.content}>
-        {!loading ?
+        {!loading && !!Object.keys(data).length?
         <div className={styles.weatherPanel}>
             <div className={styles.currentWeather}>
                 <div className={styles.leftInfo}>

@@ -5,19 +5,16 @@ import Content from '../../components/Content'
 import MainLoyout from "../../components/MainLoyout";
 
 const Home = () => {
+    const dispatch = useDispatch()
+    const data = useSelector(state => state?.data?.currentWeather) || {}
+    const isError = useSelector(state => state?.data?.errors) || {}
+    const isLoading = useSelector(state => state?.data?.loading)
+    const currentCity = useSelector(state => state?.data?.currentCity)
 
-  const dispatch = useDispatch()
-  const data = useSelector(state => state?.data?.currentWeather) || {}
-  const isError = useSelector(state => state?.data?.errors) || {}
-  const isLoading = useSelector(state => state?.data?.loading) || true
-  const currentCity = useSelector(state => state?.data?.currentCity) || {}
-
-
-  useEffect(() => {
-    dispatch(getDataCurrentWeather())
-    dispatch(getDataCurrentCity())
-  },[])
-
+    useEffect( () => {
+        dispatch(getDataCurrentWeather())
+        dispatch(getDataCurrentCity())
+    },[])
 
 
 

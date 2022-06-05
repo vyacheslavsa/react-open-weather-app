@@ -2,7 +2,8 @@ const defaultState = {//значение по умолчанию
   cash: 0,
   currentWeather: {},
   errors: {},
-  loading: true
+  loading: true,
+  currentCity: []
 };
 
 const allActions = {

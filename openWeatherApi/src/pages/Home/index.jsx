@@ -16,8 +16,6 @@ const Home = () => {
         dispatch(getDataCurrentCity())
     },[])
 
-
-
   return (
     <MainLoyout>
       <Content

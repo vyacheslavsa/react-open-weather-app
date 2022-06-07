@@ -3,12 +3,13 @@ import styles from './DropDown.module.scss'
 import {getDataCurrentCity, getDataCurrentWeather} from "../../actions/actions";
 import {useDispatch} from "react-redux";
 
-function Dropdown({data,onClose}) {
+function Dropdown({ data, onClose }) {
     const dispatch = useDispatch()
 
     const updateCity = (i) => {
-        dispatch(getDataCurrentWeather( undefined, data[i].lat, data[i].lon, undefined,undefined ))
-        dispatch(getDataCurrentCity(undefined, data[i].lat, data[i].lon))
+        dispatch({ type: "GET_DATA_WEATHER", payload: {} });
+        dispatch(getDataCurrentWeather( undefined, data[i].lat, data[i].lon, undefined,undefined ));
+        dispatch(getDataCurrentCity(undefined, data[i].lat, data[i].lon));
         onClose()
     }
 

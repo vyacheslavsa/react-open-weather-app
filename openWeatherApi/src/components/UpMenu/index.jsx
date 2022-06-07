@@ -33,15 +33,15 @@ export default function UpMenu() {
           sunny
         </span>
         <div>Your Weather</div>
+          <div className={styles.search}>
+              <input
+                  type="text"
+                  onChange={(e)=>setSearchCity(e.target.value)}
+                  onKeyDown={(e)=> getSearchCity(e)}
+              />
+              {openDropDownSearch && <Dropdown data={dataCity} onClose={()=>setOpenDropDownSearch(false)} />}
+          </div>
       </div>
-        <div className={styles.search}>
-            <input
-                type="text"
-                onChange={(e)=>setSearchCity(e.target.value)}
-                onKeyDown={(e)=> getSearchCity(e)}
-            />
-            {openDropDownSearch && <Dropdown data={dataCity} onClose={()=>setOpenDropDownSearch(false)} />}
-        </div>
       <div className={styles.rightMenu}>
           <Link to='/home'>Home</Link>
           <Link to='/about'><div>About</div></Link>

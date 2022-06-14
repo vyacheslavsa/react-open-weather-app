@@ -1,6 +1,5 @@
 import axios from "axios";
-import {detectError, getCity, getWeather, isLoading} from "../redusers/reduser";
-
+import {detectError, getCity, getResultCities, getWeather, isLoading, searchLoading} from "../redusers/reduser";
 
 export const getDataCurrentWeather = (
     APIkey = '5fb6b5d7b3e1b8e74a3f2ecca13358e5',
@@ -11,15 +10,15 @@ export const getDataCurrentWeather = (
     ) => {
 
   return dispatch => {
-    dispatch(isLoading(true))
+    dispatch(isLoading(true));
     axios
         .get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${APIkey}&units=${format}&lang=${lang}`)
           .then((response) => {
-            dispatch(getWeather(response.data))
-            dispatch(isLoading(false))
+            dispatch(getWeather(response.data));
+            dispatch(isLoading(false));
           })
           .catch((error) => {
-            dispatch(detectError(error))
+            dispatch(detectError(error));
           });
   }
 }
@@ -29,6 +28,7 @@ export const getDataCurrentCity = (
     lat = '47.221385',
     lon = '39.7114196'
     ) => {
+
     return dispatch =>   {
         dispatch(isLoading(true))
          axios
@@ -39,6 +39,21 @@ export const getDataCurrentCity = (
             })
             .catch((error) => {
                 dispatch(detectError(error))
+            });
+    }
+}
+
+export const dataSearch = (city) => {
+    return dispatch => {
+        dispatch(searchLoading(true));
+        axios
+            .get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=5fb6b5d7b3e1b8e74a3f2ecca13358e5`)
+            .then((response) => {
+                dispatch(getResultCities(response.data));
+                dispatch(searchLoading(false));
+            })
+            .catch((error) => {
+                dispatch(detectError(error));
             });
     }
 }

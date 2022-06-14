@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './MainLoyout.module.scss'
-import UpMenu from "../UpMenu";
+import UpMenu from "../Header";
 
 const MainLoyout = ({children}) => {
     return (

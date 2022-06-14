@@ -1,18 +1,26 @@
 import React from 'react';
 import styles from './DropDown.module.scss'
 import {getDataCurrentCity, getDataCurrentWeather} from "../../actions/actions";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 function Dropdown({ data, onClose }) {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const isLoading = useSelector(state => state?.data?.searchLoading);
 
     const updateCity = (i) => {
         dispatch({ type: "GET_DATA_WEATHER", payload: {} });
         dispatch(getDataCurrentWeather( undefined, data[i].lat, data[i].lon, undefined,undefined ));
         dispatch(getDataCurrentCity(undefined, data[i].lat, data[i].lon));
-        onClose()
+        onClose();
     }
 
+    if(!data.length && !isLoading) return(
+        <div className={styles.main}>
+            <div className={styles.name}>
+                No result :(
+            </div>
+        </div>
+    )
 
     return (
         <div className={styles.main}>

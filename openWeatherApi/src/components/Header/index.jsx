@@ -1,45 +1,42 @@
 import * as React from 'react';
-import styles from './UpMenu.module.scss'
+import styles from './Header.module.scss'
 import {Link} from "react-router-dom";
 import { useState} from "react";
-import axios from "axios";
 import Dropdown from "../DropDownSearch";
+import {dataSearch} from "../../actions/actions";
+import {useDispatch, useSelector} from "react-redux";
+import {ReactComponent as IconCloud} from "../../image/logo-weather.svg";
+import CustomSearch from "../CustomSearch";
 
-
-
-export default function UpMenu() {
+export default function Header() {
+    const dataResult = useSelector(state => state?.data?.resultSearch);
     const [searchCity, setSearchCity] = useState('');
     const [openDropDownSearch, setOpenDropDownSearch] = useState(false);
-    const [dataCity, setdataCity] = useState([]);
+    const dispatch = useDispatch();
 
     const getSearchCity = async (e) => {
         if(e.key === 'Enter'){
-            await axios
-                .get(`http://api.openweathermap.org/geo/1.0/direct?q=${searchCity}&limit=5&appid=5fb6b5d7b3e1b8e74a3f2ecca13358e5`)
-                .then((response) => {
-                    setdataCity(response.data)
-                    setOpenDropDownSearch(true)
-                })
-                .catch((error) => {
-                    console.log(error)
-                });
+            await dispatch(dataSearch(searchCity))
+            setOpenDropDownSearch(true)
         }
     }
   
   return (
     <div className={styles.head}>
       <div className={styles.logo}>
-        <span className="material-symbols-outlined">
-          sunny
-        </span>
+          <IconCloud/>
         <div>Your Weather</div>
           <div className={styles.search}>
-              <input
-                  type="text"
+              <CustomSearch
+                  width='300px'
+                  height='40px'
                   onChange={(e)=>setSearchCity(e.target.value)}
                   onKeyDown={(e)=> getSearchCity(e)}
+                  deleteValue={()=>setSearchCity('')}
+                  onClose={()=>setOpenDropDownSearch(false)}
+                  value={searchCity}
               />
-              {openDropDownSearch && <Dropdown data={dataCity} onClose={()=>setOpenDropDownSearch(false)} />}
+              {openDropDownSearch && <Dropdown data={dataResult} onClose={()=>setOpenDropDownSearch(false)} />}
           </div>
       </div>
       <div className={styles.rightMenu}>

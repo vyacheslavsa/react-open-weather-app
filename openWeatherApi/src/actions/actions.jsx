@@ -2,9 +2,9 @@ import axios from "axios";
 import {detectError, getCity, getResultCities, getWeather, isLoading, searchLoading} from "../redusers/reduser";
 
 export const getDataCurrentWeather = (
-    APIkey = '5fb6b5d7b3e1b8e74a3f2ecca13358e5',
     lat = '47.221385',
     lon = '39.7114196',
+    APIkey = '5fb6b5d7b3e1b8e74a3f2ecca13358e5',
     format = 'metric',
     lang = 'EN'
     ) => {
@@ -24,9 +24,9 @@ export const getDataCurrentWeather = (
 }
 
 export const getDataCurrentCity = (
-    APIkey = '5fb6b5d7b3e1b8e74a3f2ecca13358e5',
     lat = '47.221385',
-    lon = '39.7114196'
+    lon = '39.7114196',
+    APIkey = '5fb6b5d7b3e1b8e74a3f2ecca13358e5',
     ) => {
 
     return dispatch =>   {

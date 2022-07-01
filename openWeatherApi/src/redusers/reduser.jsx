@@ -15,7 +15,7 @@ const allActions = {
   CHANGE_LOADING: 'CHANGE_LOADING',
   SEARCH_LOADING: 'SEARCH_LOADING',
   GET_CITY: 'GET_CITY',
-  RESULT_SEARCH: 'RESULT_SEARCH'
+  RESULT_SEARCH: 'RESULT_SEARCH',
 }
 
 //action = {type:"", payload:""} - формат объекта type - action значение ,payload - новое значение

@@ -12,39 +12,31 @@ const Home = () => {
     const isLoading = useSelector(state => state?.data?.loading);
     const currentCity = useSelector(state => state?.data?.currentCity);
     const [modalSelectRegion, setModalSelectRegion] = useState(false)
-
-    // useEffect( () => {
-    //     dispatch(getDataCurrentWeather());
-    //     dispatch(getDataCurrentCity());
-    // },[]);
-
-
-
-    // var testObject = { 'one': 1, 'two': 2, 'three': 3 };
-    //
-    // localStorage.setItem('testObject', JSON.stringify(testObject));
-    //
-    // var retrievedObject = localStorage.getItem('testObject');
-    //
-    // console.log('retrievedObject: ', JSON.parse(retrievedObject));
+    const [showCity, setShowCity] = useState(false);
+    const currentGEO = JSON.parse(localStorage.getItem('GEOLOCATIONS'));
 
 
     const locateCity = () => {
         navigator.geolocation.getCurrentPosition(
             (position)=>{
-                alert('Последний раз вас засекали здесь: ' +
-                    position.coords.latitude + ", " + position.coords.longitude);
+                dispatch(getDataCurrentCity(position.coords.latitude,position.coords.longitude))
             }
         );
     }
 
-
-
+    useEffect(()=>{
+        if(currentGEO){
+            dispatch(getDataCurrentWeather(currentGEO.lat, currentGEO.lon));
+            dispatch(getDataCurrentCity(currentGEO.lat, currentGEO.lon));
+        } else {
+            setModalSelectRegion(true);
+        }
+    },[]);
 
     useEffect(()=>{
-        if(localStorage.currentGeo) return
-        setModalSelectRegion(true);
-    },[])
+        if(currentCity.length) setShowCity(true);
+    },[currentGEO])
+
 
   return (
       <>
@@ -56,10 +48,15 @@ const Home = () => {
           currentCity={currentCity}
       />
     </MainLoyout>
-    {modalSelectRegion &&
+    {
+        modalSelectRegion &&
         <ModalSelectRegion
             onClose={()=>setModalSelectRegion(false)}
-            locateCity={()=>locateCity()}/>}
+            locateCity={()=>locateCity()}
+            showCity={showCity}
+            currentCity={currentCity}
+        />
+    }
       </>
   )
 }

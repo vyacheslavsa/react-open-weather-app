@@ -1,14 +1,8 @@
 import axios from "axios";
 import {detectError, getCity, getResultCities, getWeather, isLoading, searchLoading} from "../redusers/reduser";
+import { APIkey, format, lang } from "../constans";
 
-export const getDataCurrentWeather = (
-    lat = '47.221385',
-    lon = '39.7114196',
-    APIkey = '5fb6b5d7b3e1b8e74a3f2ecca13358e5',
-    format = 'metric',
-    lang = 'EN'
-    ) => {
-
+export const getDataCurrentWeather = (lat, lon) => {
   return dispatch => {
     dispatch(isLoading(true));
     axios
@@ -23,11 +17,7 @@ export const getDataCurrentWeather = (
   }
 }
 
-export const getDataCurrentCity = (
-    lat = '47.221385',
-    lon = '39.7114196',
-    APIkey = '5fb6b5d7b3e1b8e74a3f2ecca13358e5',
-    ) => {
+export const getDataCurrentCity = (lat, lon,) => {
 
     return dispatch =>   {
         dispatch(isLoading(true))
@@ -47,7 +37,7 @@ export const dataSearch = (city) => {
     return dispatch => {
         dispatch(searchLoading(true));
         axios
-            .get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=5fb6b5d7b3e1b8e74a3f2ecca13358e5`)
+            .get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIkey}`)
             .then((response) => {
                 dispatch(getResultCities(response.data));
                 dispatch(searchLoading(false));

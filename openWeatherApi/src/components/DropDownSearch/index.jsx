@@ -9,8 +9,8 @@ function Dropdown({ data, onClose }) {
 
     const updateCity = (i) => {
         dispatch({ type: "GET_DATA_WEATHER", payload: {} });
-        dispatch(getDataCurrentWeather( undefined, data[i].lat, data[i].lon, undefined,undefined ));
-        dispatch(getDataCurrentCity(undefined, data[i].lat, data[i].lon));
+        dispatch(getDataCurrentWeather( data[i].lat, data[i].lon, undefined,undefined ));
+        dispatch(getDataCurrentCity(data[i].lat, data[i].lon));
         onClose();
     }
 

@@ -3,7 +3,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import {getDataCurrentCity, getDataCurrentWeather} from '../../actions/actions'
 import Content from '../../components/Content'
 import MainLoyout from "../../components/MainLoyout";
-import ModalSelectRegion from "../../components/ModalSelectRegion";
+import ModalSelectPositions from "../../components/Modals/ModalSelectPositions";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -35,28 +35,28 @@ const Home = () => {
 
     useEffect(()=>{
         if(currentCity.length) setShowCity(true);
-    },[currentGEO])
+    },[currentCity])
 
 
   return (
       <>
-    <MainLoyout>
-      <Content
-          data={data}
-          errors={isError}
-          loading={isLoading}
-          currentCity={currentCity}
-      />
-    </MainLoyout>
-    {
-        modalSelectRegion &&
-        <ModalSelectRegion
-            onClose={()=>setModalSelectRegion(false)}
-            locateCity={()=>locateCity()}
-            showCity={showCity}
-            currentCity={currentCity}
-        />
-    }
+        <MainLoyout>
+          <Content
+              data={data}
+              errors={isError}
+              loading={isLoading}
+              currentCity={currentCity}
+          />
+        </MainLoyout>
+        {
+            modalSelectRegion &&
+           <ModalSelectPositions
+               onClose={()=>setModalSelectRegion(false)}
+               locateCity={()=>locateCity()}
+               showCity={showCity}
+               currentCity={currentCity}
+           />
+        }
       </>
   )
 }

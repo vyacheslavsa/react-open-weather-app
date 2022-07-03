@@ -27,21 +27,9 @@
       justify-content: flex-end;
       padding: 5px 10px;
       box-sizing: border-box;
-
-      div:first-child {
-        width: fit-content;
-        height: fit-content;
-        transform: rotate(45deg);
-        cursor: pointer;
-        font-size: 30px;
-
-        &:hover {
-          color: grey;
-        }
-      }
     }
 
-    .container {
+    .content {
       width: 100%;
       height: 90%;
       border: 1px solid;
@@ -49,13 +37,9 @@
       flex-direction: column;
       align-items: center;
 
-      .description {
+      .title {
         text-align: center;
         margin: 20px 0;
-      }
-
-      .content {
-
       }
     }
   }

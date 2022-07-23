@@ -28,7 +28,6 @@ export default function Header() {
         <div>Your Weather</div>
           <div className={styles.search}>
               <CustomSearch
-                  width='300px'
                   height='40px'
                   onChange={(e)=>setSearchCity(e.target.value)}
                   onKeyDown={(e)=> getSearchCity(e)}

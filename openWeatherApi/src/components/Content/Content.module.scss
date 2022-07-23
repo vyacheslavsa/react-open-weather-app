@@ -1,5 +1,5 @@
 .content {
-  width: -webkit-fill-available;
+  width: 70%;
   height: 90vh;
   background-color: white;
   display: flex;
@@ -7,18 +7,16 @@
   align-items: center;
 
   .weatherPanel {
-    width: 80%;
-    height: 70%;
+
     background: url("https://img.freepik.com/fotos-gratis/fundo-do-ceu-azul_78455-345.jpg") no-repeat;
-    background-size: 111%;
+    background-size: cover;
     box-sizing: border-box;
     padding: 30px;
     color: white;
     border-radius: 20px;
     box-shadow: 0 0 50px grey;
-    min-width: 890px;
 
-    .currentWeather {//1 блок
+    .currentWeather { //1 блок
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid;

@@ -4,7 +4,7 @@ import './style.scss'
 import moment from "moment";
 
 
-export default function Content({data, errors, loading,currentCity}) {
+export default function Content({ data, errors, loading,currentCity }) {
 
     const descriptionWeather = data?.current?.weather[0]?.description[0].toUpperCase()+data?.current?.weather[0]?.description.slice(1);
     const mmHgPressure = Math.round(data?.current?.pressure * 0.75006375541921);

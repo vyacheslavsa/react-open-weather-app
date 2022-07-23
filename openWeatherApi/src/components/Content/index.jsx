@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styles from './Content.module.scss'
 import './style.scss'
 import moment from "moment";
+import {linkImageWeather} from "../../constans";
 
 
-export default function Content({ data, errors, loading,currentCity }) {
+export default function Content({ data, errors, loading }) {
 
     const descriptionWeather = data?.current?.weather[0]?.description[0].toUpperCase()+data?.current?.weather[0]?.description.slice(1);
     const mmHgPressure = Math.round(data?.current?.pressure * 0.75006375541921);
+    let currentImageWeather = '';
+    const tempRef = useRef();
+    const currentGEO = JSON.parse(localStorage.getItem('GEOLOCATIONS'));
 
     if(Object.keys(errors).length > 0) return (
         <div className={styles.content}>
@@ -15,17 +19,55 @@ export default function Content({ data, errors, loading,currentCity }) {
         </div>
     )
 
+    switch (data?.current?.weather[0]?.icon) {
+        case '01d' :
+            currentImageWeather = linkImageWeather[0].link//солнечно
+            break;
+        case '02d' :
+            currentImageWeather = linkImageWeather[1].link //немного облачно
+            break;
+        case '03d' :
+            currentImageWeather = linkImageWeather[2].link;//облачно
+            break;
+        case '04d' :
+            currentImageWeather = linkImageWeather[3].link;//хмурые тучи
+            break;
+        case '09d' :
+            currentImageWeather = linkImageWeather[4].link// дождь
+            break;
+        case '10d' :
+            currentImageWeather = linkImageWeather[4].link
+            break;
+        case '11d' :
+            currentImageWeather = linkImageWeather[4].link
+            break;
+        case '13d' :
+            currentImageWeather = linkImageWeather[4].link
+            break;
+        case '50d' :
+            currentImageWeather = linkImageWeather[4].link
+            break;
+    }
+
+    if(data?.current?.weather[0]?.icon === '01d') tempRef.current.style.color = '#b3b3b3';
+
   return (
     <div className={styles.content}>
-        {!loading && !!Object.keys(data).length?
-        <div className={styles.weatherPanel}>
+        {!loading && !!Object.keys(data).length && currentImageWeather ?
+        <div
+            className={styles.weatherPanel}
+            style={{background: `url(${currentImageWeather}) no-repeat`, backgroundSize: 'cover'}}
+        >
             <div className={styles.currentWeather}>
                 <div className={styles.leftInfo}>
-                    <div>{currentCity[0]?.name}</div>
+                    <div>{currentGEO.name}</div>
                     <div>{descriptionWeather}</div>
                     <div>Today  {moment.unix(data?.current?.dt).format('Do MMMM')}</div>
                 </div>
-                <div className={styles.rightInfo}>{Math.round(data.current?.temp)}&deg;</div>
+                <div
+                    className={styles.rightInfo}
+                    ref={tempRef}
+                >{Math.round(data.current?.temp)}&deg;</div>
             </div>
             <div className={styles.hourly}>
                 <div>Hourly Forecast</div>

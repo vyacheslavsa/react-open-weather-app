@@ -2,7 +2,6 @@ import * as React from 'react';
 import styles from './Header.module.scss'
 import {Link} from "react-router-dom";
 import { useState} from "react";
-import Dropdown from "../DropDownSearch";
 import {dataSearch} from "../../actions/actions";
 import {useDispatch, useSelector} from "react-redux";
 import {ReactComponent as IconCloud} from "../../image/logo-weather.svg";
@@ -34,8 +33,10 @@ export default function Header() {
                   deleteValue={()=>setSearchCity('')}
                   onClose={()=>setOpenDropDownSearch(false)}
                   value={searchCity}
+                  openCityList={openDropDownSearch}
+                  dataResult={dataResult}
+                  onCloseDropdown={()=>setOpenDropDownSearch(false)}
               />
-              {openDropDownSearch && <Dropdown data={dataResult} onClose={()=>setOpenDropDownSearch(false)} />}
           </div>
       </div>
       <div className={styles.rightMenu}>

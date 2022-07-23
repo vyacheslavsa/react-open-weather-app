@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './DropDown.module.scss'
-import {getDataCurrentCity, getDataCurrentWeather} from "../../actions/actions";
+import {getDataCurrentWeather} from "../../actions/actions";
 import {useDispatch, useSelector} from "react-redux";
 
 function Dropdown({ data, onClose }) {
@@ -10,7 +10,7 @@ function Dropdown({ data, onClose }) {
     const updateCity = (i) => {
         dispatch({ type: "GET_DATA_WEATHER", payload: {} });
         dispatch(getDataCurrentWeather( data[i].lat, data[i].lon, undefined,undefined ));
-        dispatch(getDataCurrentCity(data[i].lat, data[i].lon));
+        localStorage.setItem('GEOLOCATIONS', JSON.stringify(data[i]));
         onClose();
     }
 

@@ -39,13 +39,39 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 400px;
+
+     a:first-child {
+      margin-right: 30px;
+
+       &:hover {
+         transform: scale(1.2,1.2);
+       }
+    }
+
+    a:last-child {
+      transform: rotate(0deg);
+    }
+
+    & a:hover {
+      &:last-child{
+        transition: 0.5s;
+        transform: rotate(27deg);
+      }
+    }
 
     & > a {
       cursor: pointer;
       font-weight: 600;
       color: white;
       text-decoration: none;
+      background: transparent;
+      transition: 0.5s;
+
+      & svg {
+        path {
+          fill: white;
+        }
+      }
     }
   }
 }

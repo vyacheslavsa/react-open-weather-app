@@ -17,13 +17,16 @@ const CustomSearch = ({
 }) => {
 
     const customRef = useRef();
+    const deleteIcon= useRef();
 
     const onFocus = () => {
-        customRef.current.style.boxShadow = '0 0 15px black'
+        customRef.current.style.boxShadow = '0 0 15px black';
+        deleteIcon.current.style.display = 'block';
     }
 
     const onBlur = () => {
-        customRef.current.style.boxShadow = 'none'
+        customRef.current.style.boxShadow = 'none';
+        deleteIcon.current.style.display = 'none';
     }
 
     const cleanField = () => {

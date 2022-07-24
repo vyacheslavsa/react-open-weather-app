@@ -6,6 +6,8 @@ import {dataSearch} from "../../actions/actions";
 import {useDispatch, useSelector} from "react-redux";
 import {ReactComponent as IconCloud} from "../../image/logo-weather.svg";
 import CustomSearch from "../CustomSearch";
+import {ReactComponent as HomeIcon} from "../../image/home_FILL0_wght300_GRAD200_opsz48.svg";
+import {ReactComponent as SettingsIcon} from "../../image/settings_FILL0_wght300_GRAD200_opsz48.svg";
 
 export default function Header() {
     const dataResult = useSelector(state => state?.data?.resultSearch);
@@ -40,10 +42,8 @@ export default function Header() {
           </div>
       </div>
       <div className={styles.rightMenu}>
-          <Link to='/home'>Home</Link>
-          <Link to='/about'><div>About</div></Link>
-          <Link to='/settings'>Settings</Link>
-          <Link to='/contact'><div>Contact</div></Link>
+          <Link to='/home'><HomeIcon/></Link>
+          <Link to='/settings'><SettingsIcon/></Link>
       </div>
     </div>
   );

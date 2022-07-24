@@ -1,8 +1,10 @@
 import React from 'react'
 import MainLoyout from "../../components/MainLoyout";
 import styles from './Settings.module.scss'
+import {ReactComponent as IconEarth} from "../../image/language_FILL0_wght400_GRAD0_opsz48.svg";
+import Dropdown from "../../components/Dropdown";
 
- function Settings() {
+function Settings() {
   return (
       <MainLoyout>
           <div className={styles.content}>
@@ -13,11 +15,12 @@ import styles from './Settings.module.scss'
                   perspective: '500px'
               }}>
                   <div className={styles.settingsBlock}>
-                      <div className={styles.itemSettings}/>
-                      <div className={styles.itemSettings}/>
-                      <div className={styles.itemSettings}/>
-                      <div className={styles.itemSettings}/>
-                      <div className={styles.itemSettings}/>
+                      <Dropdown currentLanguage='EN'>
+                          <div className={styles.leftContent}>
+                              <IconEarth/>
+                              <div className={styles.description}>Select Language</div>
+                          </div>
+                      </Dropdown>
                   </div>
               </div>
           </div>

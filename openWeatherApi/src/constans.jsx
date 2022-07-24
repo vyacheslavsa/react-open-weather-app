@@ -11,4 +11,7 @@ export const linkImageWeather = [
     {link: 'https://citytraffic.ru/wp-content/uploads/2020/04/%D0%B3%D1%80%D0%BE%D0%B7%D0%B0.jpg'},//гроза
     {link: 'http://voms.ru/upload/iblock/655/65538d680d4229282fdd8e70abf16876.jpg'},//снег
     {link: 'https://vsluh.ru/upload/archive/novosti/transport/865/kak-pravilno-ezdit-v-tuman-sovet-avtoeksperta_347899/images/5b449c91d50fa44c58917e54d61a3860.jpg'}//туман
+];
+export const allLanguage = [
+    'EN','RU'
 ]

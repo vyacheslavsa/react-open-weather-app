@@ -52,7 +52,7 @@ export default function Content({ data, errors, loading }) {
                 <div>{errors}</div>
             </div>
         </div>
-    )
+    );
 
   return (
     <div className={styles.content}>

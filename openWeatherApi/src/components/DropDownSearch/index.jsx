@@ -28,7 +28,7 @@ function Dropdown({ data, onClose }) {
                 <div
                     className={styles.name}
                     key={i}
-                    onClick={()=>updateCity(i)}
+                    onClick={() => updateCity(i)}
                 >
                     {item.name} {item.country}
                 </div>

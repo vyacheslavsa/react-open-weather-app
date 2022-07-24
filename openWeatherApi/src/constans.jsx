@@ -1,4 +1,4 @@
-export const APIkey = '44b851c4ecc0e18fbedad50e1228e6d3';
+export const APIkey = '162b8bbe283e22e16a8de4578a3c385b';
 export const format = 'metric';
 export const lang = 'EN';
 export const linkImageWeather = [

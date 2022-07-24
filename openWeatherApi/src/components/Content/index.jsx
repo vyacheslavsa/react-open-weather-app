@@ -3,7 +3,7 @@ import styles from './Content.module.scss'
 import './style.scss'
 import moment from "moment";
 import {linkImageWeather} from "../../constans";
-
+import {ReactComponent as ImageError} from "../../image/error_FILL0_wght400_GRAD0_opsz48.svg"
 
 export default function Content({ data, errors, loading }) {
 
@@ -13,43 +13,46 @@ export default function Content({ data, errors, loading }) {
     const tempRef = useRef();
     const currentGEO = JSON.parse(localStorage.getItem('GEOLOCATIONS'));
 
-    if(Object.keys(errors).length > 0) return (
-        <div className={styles.content}>
-            <div>{errors}</div>
-        </div>
-    )
-
     switch (data?.current?.weather[0]?.icon) {
         case '01d' :
-            currentImageWeather = linkImageWeather[0].link//солнечно
+            currentImageWeather = linkImageWeather[0].link
             break;
         case '02d' :
-            currentImageWeather = linkImageWeather[1].link //немного облачно
+            currentImageWeather = linkImageWeather[1].link
             break;
         case '03d' :
-            currentImageWeather = linkImageWeather[2].link;//облачно
+            currentImageWeather = linkImageWeather[2].link;
             break;
         case '04d' :
-            currentImageWeather = linkImageWeather[3].link;//хмурые тучи
+            currentImageWeather = linkImageWeather[3].link;
             break;
         case '09d' :
-            currentImageWeather = linkImageWeather[4].link// дождь
+            currentImageWeather = linkImageWeather[4].link
             break;
         case '10d' :
-            currentImageWeather = linkImageWeather[4].link
+            currentImageWeather = linkImageWeather[5].link
             break;
         case '11d' :
-            currentImageWeather = linkImageWeather[4].link
+            currentImageWeather = linkImageWeather[6].link
             break;
         case '13d' :
-            currentImageWeather = linkImageWeather[4].link
+            currentImageWeather = linkImageWeather[7].link
             break;
         case '50d' :
-            currentImageWeather = linkImageWeather[4].link
+            currentImageWeather = linkImageWeather[8].link
             break;
+        default :
+            currentImageWeather = linkImageWeather[2].link
     }
 
-    if(data?.current?.weather[0]?.icon === '01d') tempRef.current.style.color = '#b3b3b3';
+    if(Object.keys(errors).length > 0) return (
+        <div className={styles.content}>
+            <div className={styles.errorContent}>
+                <ImageError/>
+                <div>{errors}</div>
+            </div>
+        </div>
+    )
 
   return (
     <div className={styles.content}>

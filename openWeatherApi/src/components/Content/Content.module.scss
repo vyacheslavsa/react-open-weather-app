@@ -1,17 +1,17 @@
 .content {
   width: 70%;
   height: 90vh;
-  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: transparent;
 
   .weatherPanel {
     box-sizing: border-box;
     padding: 30px;
     color: white;
     border-radius: 20px;
-    box-shadow: 0 0 50px grey;
+    box-shadow: 0 0 50px white;
 
     .currentWeather { //1 блок
       display: flex;
@@ -71,6 +71,26 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+      }
+    }
+  }
+
+  .errorContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: bold;
+    border: 2px solid black;
+    padding: 30px;
+    border-radius: 15px;
+    color: grey;
+
+    & svg {
+      margin-right: 10px;
+
+      path {
+        fill: red;
       }
     }
   }

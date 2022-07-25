@@ -17,6 +17,7 @@
     animation-name: one;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
+    background: linear-gradient(326deg, #22c1c3 0%, #672dfd 100%);
 
     .currentWeather { //1 блок
       display: flex;
@@ -26,10 +27,26 @@
 
       .leftInfo {
         font-size: 30px;
+
+        .descriptionWeather {
+          display: flex;
+        }
       }
 
       .rightInfo {
         font-size: 90px;
+      }
+
+      .iconWeather {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 15px;
+
+        & svg {
+          width: 40px;
+          height: 40px;
+        }
       }
     }
 

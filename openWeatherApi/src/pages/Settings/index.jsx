@@ -15,7 +15,7 @@ function Settings() {
                   perspective: '500px'
               }}>
                   <div className={styles.settingsBlock}>
-                      <Dropdown currentLanguage='EN'>
+                      <Dropdown>
                           <div className={styles.leftContent}>
                               <IconEarth/>
                               <div className={styles.description}>Select Language</div>

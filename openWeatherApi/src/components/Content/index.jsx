@@ -2,47 +2,69 @@ import React, { useRef } from 'react'
 import styles from './Content.module.scss'
 import './style.scss'
 import moment from "moment";
-import {linkImageWeather} from "../../constans";
 import {ReactComponent as ImageError} from "../../image/error_FILL0_wght400_GRAD0_opsz48.svg"
+import {ReactComponent as SunnyIcon} from "../../image/sunny.svg"
+import {ReactComponent as SmallCloudyIcon} from "../../image/small_cloudy.svg"
+import {ReactComponent as CloudyIcon} from "../../image/cloudy.svg"
+import {ReactComponent as BrokeCloudsIcon} from "../../image/broken_clouds.svg"
+import {ReactComponent as RainIcon} from "../../image/rain.svg"
+import {ReactComponent as RainSunIcon} from "../../image/rain_sun.svg"
+import {ReactComponent as ThunderstormIcon} from "../../image/thunderstorm.svg"
+import {ReactComponent as SnowIcon} from "../../image/snow.svg"
+import {ReactComponent as FogIcon} from "../../image/fog.svg"
+import {ReactComponent as NightIcon} from "../../image/night.svg"
+import {ReactComponent as SmallCloudyIconNight} from "../../image/small_cloudy_night.svg"
+import {ReactComponent as CloudyIconNight} from "../../image/small_cloudy_night.svg"
+import {ReactComponent as RainMoonIcon} from "../../image/rain_night_moon.svg"
 
 export default function Content({ data, errors, loading }) {
 
     const descriptionWeather = data?.current?.weather[0]?.description[0].toUpperCase()+data?.current?.weather[0]?.description.slice(1);
     const mmHgPressure = Math.round(data?.current?.pressure * 0.75006375541921);
-    let currentImageWeather = '';
     const tempRef = useRef();
     const currentGEO = JSON.parse(localStorage.getItem('GEOLOCATIONS'));
 
-    switch (data?.current?.weather[0]?.icon) {
-        case '01d' :
-            currentImageWeather = linkImageWeather[0].link
-            break;
-        case '02d' :
-            currentImageWeather = linkImageWeather[1].link
-            break;
-        case '03d' :
-            currentImageWeather = linkImageWeather[2].link;
-            break;
-        case '04d' :
-            currentImageWeather = linkImageWeather[3].link;
-            break;
-        case '09d' :
-            currentImageWeather = linkImageWeather[4].link
-            break;
-        case '10d' :
-            currentImageWeather = linkImageWeather[5].link
-            break;
-        case '11d' :
-            currentImageWeather = linkImageWeather[6].link
-            break;
-        case '13d' :
-            currentImageWeather = linkImageWeather[7].link
-            break;
-        case '50d' :
-            currentImageWeather = linkImageWeather[8].link
-            break;
-        default :
-            currentImageWeather = linkImageWeather[2].link
+    const currentImageWeather = () => {
+        switch (data?.current?.weather[0]?.icon) {
+            case '01d':
+                return <SunnyIcon/>
+            case '02d':
+                return <SmallCloudyIcon/>
+            case '03d':
+                return <CloudyIcon/>
+            case '04d':
+                return <BrokeCloudsIcon/>
+            case '09d':
+                return <RainIcon/>
+            case '10d':
+                return <RainSunIcon/>
+            case '11d':
+                return <ThunderstormIcon/>
+            case '13d':
+                return <SnowIcon/>
+            case '50d':
+                return <FogIcon/>
+            case '01n':
+                return <NightIcon/>
+            case '02n':
+                return <SmallCloudyIconNight/>
+            case '03n':
+                return <CloudyIconNight/>
+            case '04n':
+                return <BrokeCloudsIcon/>
+            case '09n':
+                return <RainIcon/>
+            case '10n':
+                return <RainMoonIcon/>
+            case '11n':
+                return <ThunderstormIcon/>
+            case '13n':
+                return <SnowIcon/>
+            case '50n':
+                return <FogIcon/>
+            default:
+                return <BrokeCloudsIcon/>
+        }
     }
 
     if(Object.keys(errors).length > 0) return (
@@ -57,14 +79,15 @@ export default function Content({ data, errors, loading }) {
   return (
     <div className={styles.content}>
         {!loading && !!Object.keys(data).length && currentImageWeather ?
-        <div
-            className={styles.weatherPanel}
-            style={{background: `url(${currentImageWeather}) no-repeat`, backgroundSize: 'cover'}}
-        >
+        <div className={styles.weatherPanel}>
             <div className={styles.currentWeather}>
                 <div className={styles.leftInfo}>
                     <div>{currentGEO.name}</div>
-                    <div>{descriptionWeather}</div>
+                    <div className={styles.descriptionWeather}>{descriptionWeather}
+                        <div className={styles.iconWeather}>
+                            {currentImageWeather()}
+                        </div>
+                    </div>
                     <div>Today  {moment.unix(data?.current?.dt).format('Do MMMM')}</div>
                 </div>
                 <div

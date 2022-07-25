@@ -18,7 +18,6 @@ export const getDataCurrentWeather = (lat, lon) => {
 }
 
 export const getDataCurrentCity = (lat, lon) => {
-
     return dispatch =>   {
         dispatch(isLoading(true))
          axios

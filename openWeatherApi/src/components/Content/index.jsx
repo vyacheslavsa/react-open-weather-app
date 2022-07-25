@@ -24,8 +24,9 @@ export default function Content({ data, errors, loading }) {
     const tempRef = useRef();
     const currentGEO = JSON.parse(localStorage.getItem('GEOLOCATIONS'));
 
-    const currentImageWeather = () => {
-        switch (data?.current?.weather[0]?.icon) {
+    const currentImageWeather = (item) => {
+        console.log(item)
+        switch (item ? item : data?.current?.weather[0]?.icon) {
             case '01d':
                 return <SunnyIcon/>
             case '02d':
@@ -97,17 +98,24 @@ export default function Content({ data, errors, loading }) {
             </div>
             <div className={styles.hourly}>
                 <div>Hourly Forecast</div>
-                <div className={styles.times}>
-                    {[...new Array(10).keys()]
-                        .map(index =>
-                            <div key={index}>{moment.unix(data?.hourly[index+1]?.dt).format('LT')}</div>
-                        )}
+                <div className={styles.iconHourse}>
+                    {[...new Array(10).keys()].map((_, index) =>
+                        <div key={index}>{currentImageWeather(data?.hourly[index]?.weather[0]?.icon)}</div>
+                    )}
                 </div>
-                <div className={styles.tempHourse}>
-                    {[...new Array(10).keys()]
+                <div className={styles.dayWeather}>
+                    <div className={styles.times}>
+                        {[...new Array(10).keys()]
                         .map(index =>
-                            <div key={index}>{Math.round(data?.hourly[index+1]?.temp)}&deg;</div>
+                            <div key={index} className={styles.itemTime}>{moment.unix(data?.hourly[index+1]?.dt).format('LT')}</div>
                         )}
+                    </div>
+                    <div className={styles.tempHourse}>
+                        {[...new Array(10).keys()]
+                            .map(index =>
+                                <div key={index}>{Math.round(data?.hourly[index+1]?.temp)}&deg;</div>
+                            )}
+                    </div>
                 </div>
             </div>
             <div className={styles.week}>

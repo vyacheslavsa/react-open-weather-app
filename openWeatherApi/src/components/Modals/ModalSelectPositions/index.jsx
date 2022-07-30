@@ -13,6 +13,7 @@ function ModalSelectPositions({ onClose,locateCity,showCity,currentCity }) {
     const [openDropDownSearch, setOpenDropDownSearch] = useState(false);
 
     const saveCity = (currenCity) => {
+        onClose();
         localStorage.setItem('GEOLOCATIONS', JSON.stringify(currenCity));
         dispatch(getDataCurrentWeather(currenCity.lat, currenCity.lon));
         onClose();
@@ -26,7 +27,7 @@ function ModalSelectPositions({ onClose,locateCity,showCity,currentCity }) {
     }
 
     return (
-        <Modal title={'Выберите регион вручную или определите свое расположение'}>
+        <Modal title={'Select a region manually or define your location'}>
             <div>
                 <div className={styles.searchContainer}>
                     <CustomSearch
@@ -39,21 +40,22 @@ function ModalSelectPositions({ onClose,locateCity,showCity,currentCity }) {
                         openCityList={openDropDownSearch}
                         dataResult={dataResult}
                         onCloseDropdown={()=>setOpenDropDownSearch(false)}
+                        onCloseModal={onClose}
                     />
                 </div>
                 <div className={styles.btn}>
                     <ButtonCustom
                         onClick={locateCity}
-                        title='Определить местоположение'
+                        title='Detect location'
                     />
                 </div>
                 {showCity &&
                     <>
-                        <div>Ваш город: {currentCity[0].name}?</div>
-                        <div>
+                        <div>Your city: {currentCity[0].name}?</div>
+                        <div className={styles.btnBlock}>
                             <ButtonCustom
                                 onClick={() => saveCity(currentCity[0])}
-                                title='Да'
+                                title='Сonfirm'
                             />
                         </div>
                     </>

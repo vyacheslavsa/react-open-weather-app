@@ -16,6 +16,8 @@ import {ReactComponent as NightIcon} from "../../image/night.svg"
 import {ReactComponent as SmallCloudyIconNight} from "../../image/small_cloudy_night.svg"
 import {ReactComponent as CloudyIconNight} from "../../image/small_cloudy_night.svg"
 import {ReactComponent as RainMoonIcon} from "../../image/rain_night_moon.svg"
+import {useSelector} from "react-redux";
+import {allLanguage} from "../../constans";
 
 export default function Content({ data, errors, loading }) {
 
@@ -23,9 +25,26 @@ export default function Content({ data, errors, loading }) {
     const mmHgPressure = Math.round(data?.current?.pressure * 0.75006375541921);
     const tempRef = useRef();
     const currentGEO = JSON.parse(localStorage.getItem('GEOLOCATIONS'));
+    const location = useSelector(state => state.data.interfaceLanguage);
+
+    const currentLanguage = () => {
+        let result = null;
+        for (const key in allLanguage) {
+            console.log(key)
+            if(location === key) result = allLanguage[key]
+        }
+        return result;
+    }
+
+    const nameCity = () => {
+        let result = null;
+        for (const value in currentGEO.local_names) {
+             if(value === location.toLowerCase())result = currentGEO.local_names[value]
+        }
+        return result
+    }
 
     const currentImageWeather = (item) => {
-        console.log(item)
         switch (item ? item : data?.current?.weather[0]?.icon) {
             case '01d':
                 return <SunnyIcon/>
@@ -77,19 +96,23 @@ export default function Content({ data, errors, loading }) {
         </div>
     );
 
+    console.log(moment.unix(data?.current?.dt).format('dd'))
+
   return (
     <div className={styles.content}>
         {!loading && !!Object.keys(data).length && currentImageWeather ?
         <div className={styles.weatherPanel}>
             <div className={styles.currentWeather}>
                 <div className={styles.leftInfo}>
-                    <div>{currentGEO.name}</div>
+                    <div>{nameCity()}</div>
                     <div className={styles.descriptionWeather}>{descriptionWeather}
                         <div className={styles.iconWeather}>
                             {currentImageWeather()}
                         </div>
                     </div>
-                    <div>Today  {moment.unix(data?.current?.dt).format('Do MMMM')}</div>
+                    <div>
+                        {currentLanguage().content.today} {moment.unix(data?.current?.dt).format('l')} {moment.unix(data?.current?.dt).format('MMMM')}
+                    </div>
                 </div>
                 <div
                     className={styles.rightInfo}

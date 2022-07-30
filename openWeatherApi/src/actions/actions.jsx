@@ -1,8 +1,8 @@
 import axios from "axios";
 import {detectError, getCity, getResultCities, getWeather, isLoading, searchLoading} from "../redusers/reduser";
-import { APIkey, format, lang } from "../constans";
+import { APIkey, format } from "../constans";
 
-export const getDataCurrentWeather = (lat, lon) => {
+export const getDataCurrentWeather = (lat, lon, lang) => {
   return dispatch => {
     dispatch(isLoading(true));
     axios

@@ -12,10 +12,11 @@
 
   .root {
     width: 80%;
-    height: 50%;
+    height: fit-content;
     background-color: white;
     border-radius: 10px;
     overflow: hidden;
+    padding: 30px;
 
     .header {
       width: 100%;

@@ -14,7 +14,16 @@ function Dropdown({children}) {
     const showLanguage = (item) => {
         dispatch(setLanguage(item));
         setShowList(false);
-    }
+        localStorage.setItem('CURRENT_LANG', JSON.stringify('RU'))
+    };
+
+    const arrLang = () => {
+        const result = [];
+        for (const key in allLanguage) {
+            result.push(key)
+        }
+        return result;
+    };
 
     return (
         <div className={styles.main} onClick={() => setShowList(!showList)}>
@@ -25,13 +34,13 @@ function Dropdown({children}) {
             </div>
             {showList &&
                 <div className={styles.list}>
-                    {allLanguage.map((item,index) =>
+                    {arrLang().map((item,index) =>
                         <div
                             className={styles.item}
                             onClick={()=>showLanguage(item)}
                             key={index}
                         >
-                            {allLanguage[index]}
+                            {arrLang()[index]}
                         </div>
                     )}
 

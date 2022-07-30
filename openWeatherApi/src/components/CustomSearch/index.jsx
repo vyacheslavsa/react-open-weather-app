@@ -13,7 +13,8 @@ const CustomSearch = ({
     value,
     openCityList,
     dataResult,
-    onCloseDropdown
+    onCloseDropdown,
+    onCloseModal
 }) => {
 
     const customRef = useRef();
@@ -54,7 +55,7 @@ const CustomSearch = ({
                     <IconDelete onClick={() => cleanField()}/>
                 </div>}
             </div>
-            {openCityList && <Dropdown data={dataResult} onClose={onCloseDropdown}/>}
+            {openCityList && <Dropdown data={dataResult} onClose={onCloseDropdown} onCloseModal={onCloseModal}/>}
         </>
     );
 }

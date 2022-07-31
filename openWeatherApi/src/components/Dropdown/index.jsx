@@ -14,7 +14,7 @@ function Dropdown({children}) {
     const showLanguage = (item) => {
         dispatch(setLanguage(item));
         setShowList(false);
-        localStorage.setItem('CURRENT_LANG', JSON.stringify('RU'))
+        localStorage.setItem('CURRENT_LANG', JSON.stringify(item))
     };
 
     const arrLang = () => {

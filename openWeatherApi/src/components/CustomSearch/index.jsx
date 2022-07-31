@@ -1,7 +1,8 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import styles from './CustoomSearch.module.scss'
 import {ReactComponent as IconDelete} from "../../image/4115230-cancel-close-cross-delete_114048.svg";
 import Dropdown from "../DropDownSearch";
+import cs from 'classnames';
 
 const CustomSearch = ({
     width,
@@ -18,16 +19,15 @@ const CustomSearch = ({
 }) => {
 
     const customRef = useRef();
-    const deleteIcon= useRef();
+
+    const [blur, setBlur] = useState(false);
 
     const onFocus = () => {
-        customRef.current.style.boxShadow = '0 0 15px black';
-        deleteIcon.current.style.display = 'block';
+        setBlur(true)
     }
 
     const onBlur = () => {
-        customRef.current.style.boxShadow = 'none';
-        deleteIcon.current.style.display = 'none';
+        setBlur(false)
     }
 
     const cleanField = () => {
@@ -38,7 +38,7 @@ const CustomSearch = ({
     return (
         <>
             <div
-                className={styles.root}
+                className={cs(styles.root,{[styles.blur]:blur})}
                 style={{width: width, height: height}}
                 ref={customRef}
                 onFocus={() => onFocus()}

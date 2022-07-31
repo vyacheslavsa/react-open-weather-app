@@ -18,7 +18,6 @@ const Home = () => {
     const currentGEO = JSON.parse(localStorage.getItem('GEOLOCATIONS'));
     const actualLocation = localStoreWeather || language;
 
-
     const locateCity = () => {
         navigator.geolocation.getCurrentPosition(
             (position)=>{

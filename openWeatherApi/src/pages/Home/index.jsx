@@ -12,6 +12,7 @@ const Home = () => {
     const isLoading = useSelector(state => state?.data?.loading);
     const currentCity = useSelector(state => state?.data?.currentCity);
     const language = useSelector(state => state?.data?.interfaceLanguage);
+    const localStoreWeather = JSON.parse(localStorage.getItem('CURRENT_LANG'));
     const [modalSelectRegion, setModalSelectRegion] = useState(false)
     const [showCity, setShowCity] = useState(false);
     const currentGEO = JSON.parse(localStorage.getItem('GEOLOCATIONS'));
@@ -26,9 +27,9 @@ const Home = () => {
     }
 
     useEffect(()=>{
-        localStorage.setItem('CURRENT_LANG', JSON.stringify(language))
+        localStorage.setItem('CURRENT_LANG', JSON.stringify(localStoreWeather || language))
         if(currentGEO){
-            dispatch(getDataCurrentWeather(currentGEO.lat, currentGEO.lon, language));
+            dispatch(getDataCurrentWeather(currentGEO.lat, currentGEO.lon, localStoreWeather || language));
             dispatch(getDataCurrentCity(currentGEO.lat, currentGEO.lon));
         } else {
             setModalSelectRegion(true);

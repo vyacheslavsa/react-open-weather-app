@@ -26,11 +26,13 @@ export default function Content({ data, errors, loading }) {
     const tempRef = useRef();
     const currentGEO = JSON.parse(localStorage.getItem('GEOLOCATIONS'));
     const location = useSelector(state => state.data.interfaceLanguage);
+    const localStoreWeather = JSON.parse(localStorage.getItem('CURRENT_LANG'));
+    const actualLocation = localStoreWeather || location;
 
     const currentLanguage = () => {
         let result = null;
         for (const key in allLanguage) {
-            if(location === key) result = allLanguage[key]
+            if(actualLocation === key) result = allLanguage[key]
         }
         return result;
     }
@@ -38,7 +40,7 @@ export default function Content({ data, errors, loading }) {
     const nameCity = () => {
         let result = null;
         for (const value in currentGEO.local_names) {
-             if(value === location.toLowerCase())result = currentGEO.local_names[value]
+             if(value === actualLocation.toLowerCase())result = currentGEO.local_names[value]
         }
         return result
     }
@@ -116,8 +118,8 @@ export default function Content({ data, errors, loading }) {
                         </div>
                     </div>
                     <div>
-                        {currentLanguage().content.today} {moment.unix(data?.current?.dt).format(location === 'EN'?'Do':'D')}
-                        {location !== 'EN' && currentLanguage().content.endDay} {currentMouth(moment.unix(data?.current?.dt).format('MMMM').toLowerCase())}
+                        {currentLanguage().content.today} {moment.unix(data?.current?.dt).format(actualLocation === 'EN'?'Do':'D')}
+                        {actualLocation !== 'EN' && currentLanguage().content.endDay} {currentMouth(moment.unix(data?.current?.dt).format('MMMM').toLowerCase())}
                     </div>
                 </div>
                 <div
@@ -162,8 +164,8 @@ export default function Content({ data, errors, loading }) {
                         {[...new Array(7).keys()]
                             .map(index =>
                                 <div key={index}>
-                                    {moment.unix(data?.daily[index+1]?.dt).format(location === 'EN'?'Do':'D')}
-                                    {location !== 'EN' && currentLanguage().content.endDay}&nbsp;
+                                    {moment.unix(data?.daily[index+1]?.dt).format(actualLocation === 'EN'?'Do':'D')}
+                                    {actualLocation !== 'EN' && currentLanguage().content.endDay}&nbsp;
                                     {currentMouth(moment.unix(data?.daily[index+1]?.dt).format('MMMM').toLowerCase())}
                                 </div>
                             )}

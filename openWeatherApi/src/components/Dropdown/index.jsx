@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import styles from "../../components/Dropdown/Dropdown.module.scss";
-import { ReactComponent as MoreInfo } from "../../image/expand_more_FILL0_wght400_GRAD0_opsz48.svg";
+import {ReactComponent as MoreInfo} from "../../image/expand_more_FILL0_wght400_GRAD0_opsz48.svg";
 import {useDispatch, useSelector} from "react-redux";
-import { setLanguage } from "../../redusers/reduser";
-import { allLanguage } from "../../constans";
+import {setLanguage} from "../../redusers/reduser";
+import {allLanguage} from "../../constans";
 
 
 function Dropdown({children}) {
@@ -35,10 +35,10 @@ function Dropdown({children}) {
             </div>
             {showList &&
                 <div className={styles.list}>
-                    {arrLang().map((item,index) =>
+                    {arrLang().map((item, index) =>
                         <div
                             className={styles.item}
-                            onClick={()=>showLanguage(item)}
+                            onClick={() => showLanguage(item)}
                             key={index}
                         >
                             {arrLang()[index]}

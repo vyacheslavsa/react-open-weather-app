@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useDispatch,useSelector } from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {getDataCurrentCity, getDataCurrentWeather} from '../../actions/actions'
 import Content from '../../components/Content'
 import MainLoyout from "../../components/MainLoyout";
@@ -20,48 +20,47 @@ const Home = () => {
 
     const locateCity = () => {
         navigator.geolocation.getCurrentPosition(
-            (position)=>{
-                dispatch(getDataCurrentCity(position.coords.latitude,position.coords.longitude))
+            (position) => {
+                dispatch(getDataCurrentCity(position.coords.latitude, position.coords.longitude))
             }
         );
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         localStorage.setItem('CURRENT_LANG', JSON.stringify(actualLocation))
-        if(currentGEO){
+        if (currentGEO) {
             dispatch(getDataCurrentWeather(currentGEO.lat, currentGEO.lon, actualLocation));
             dispatch(getDataCurrentCity(currentGEO.lat, currentGEO.lon));
         } else {
             setModalSelectRegion(true);
         }
-    },[]);
+    }, []);
 
-    useEffect(()=>{
-        if(currentCity.length) setShowCity(true);
-    },[currentCity])
+    useEffect(() => {
+        if (currentCity.length) setShowCity(true);
+    }, [currentCity])
 
-
-  return (
-      <>
-        <MainLoyout>
-          <Content
-              data={data}
-              errors={isError}
-              loading={isLoading}
-              currentCity={currentCity}
-          />
-        </MainLoyout>
-        {
-            modalSelectRegion &&
-           <ModalSelectPositions
-               onClose={()=>setModalSelectRegion(false)}
-               locateCity={()=>locateCity()}
-               showCity={showCity}
-               currentCity={currentCity}
-           />
-        }
-      </>
-  )
+    return (
+        <>
+            <MainLoyout>
+                <Content
+                    data={data}
+                    errors={isError}
+                    loading={isLoading}
+                    currentCity={currentCity}
+                />
+            </MainLoyout>
+            {
+                modalSelectRegion &&
+                <ModalSelectPositions
+                    onClose={() => setModalSelectRegion(false)}
+                    locateCity={() => locateCity()}
+                    showCity={showCity}
+                    currentCity={currentCity}
+                />
+            }
+        </>
+    )
 }
 
 export default Home

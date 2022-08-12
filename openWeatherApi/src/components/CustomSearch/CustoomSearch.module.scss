@@ -1,7 +1,9 @@
+@import "../../variables";
+
 .root {
   border: 1px solid;
   border-radius: 10px;
-  background-color: white;
+  background-color: $white;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -36,13 +38,13 @@
     justify-content: center;
 
     &:hover {
-      background-color: #d5d5d5;
+      background-color: $lite-gray;
       border-radius: 5px;
     }
   }
 }
 
 .blur {
-  box-shadow: 0 0 15px black;
+  box-shadow: 0 0 15px $black;
   display: block;
 }

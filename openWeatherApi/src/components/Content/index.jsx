@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, {useRef} from 'react'
 import styles from './Content.module.scss'
 import './style.scss'
 import moment from "moment";
@@ -19,9 +19,9 @@ import {ReactComponent as RainMoonIcon} from "../../image/rain_night_moon.svg"
 import {useSelector} from "react-redux";
 import {allLanguage} from "../../constans";
 
-export default function Content({ data, errors, loading }) {
+export default function Content({data, errors, loading}) {
 
-    const descriptionWeather = data?.current?.weather[0]?.description[0].toUpperCase()+data?.current?.weather[0]?.description.slice(1);
+    const descriptionWeather = data?.current?.weather[0]?.description[0].toUpperCase() + data?.current?.weather[0]?.description.slice(1);
     const mmHgPressure = Math.round(data?.current?.pressure * 0.75006375541921);
     const tempRef = useRef();
     const currentGEO = JSON.parse(localStorage.getItem('GEOLOCATIONS'));
@@ -32,7 +32,7 @@ export default function Content({ data, errors, loading }) {
     const currentLanguage = () => {
         let result = null;
         for (const key in allLanguage) {
-            if(actualLocation === key) result = allLanguage[key]
+            if (actualLocation === key) result = allLanguage[key]
         }
         return result;
     }
@@ -40,7 +40,7 @@ export default function Content({ data, errors, loading }) {
     const nameCity = () => {
         let result = null;
         for (const value in currentGEO.local_names) {
-             if(value === actualLocation.toLowerCase())result = currentGEO.local_names[value]
+            if (value === actualLocation.toLowerCase()) result = currentGEO.local_names[value]
         }
         return result
     }
@@ -48,7 +48,7 @@ export default function Content({ data, errors, loading }) {
     const currentMouth = (mouth) => {
         let result = null;
         for (const key in currentLanguage().content.month) {
-            if(key === mouth) result = currentLanguage().content.month[key]
+            if (key === mouth) result = currentLanguage().content.month[key]
         }
         return result
     }
@@ -96,7 +96,7 @@ export default function Content({ data, errors, loading }) {
         }
     }
 
-    if(Object.keys(errors).length > 0) return (
+    if (Object.keys(errors).length > 0) return (
         <div className={styles.content}>
             <div className={styles.errorContent}>
                 <ImageError/>
@@ -105,101 +105,102 @@ export default function Content({ data, errors, loading }) {
         </div>
     );
 
-  return (
-    <div className={styles.content}>
-        {!loading && !!Object.keys(data).length && currentImageWeather ?
-        <div className={styles.weatherPanel}>
-            <div className={styles.currentWeather}>
-                <div className={styles.leftInfo}>
-                    <div>{nameCity()}</div>
-                    <div className={styles.descriptionWeather}>{descriptionWeather}
-                        <div className={styles.iconWeather}>
-                            {currentImageWeather()}
+    return (
+        <div className={styles.content}>
+            {!loading && !!Object.keys(data).length && currentImageWeather ?
+                <div className={styles.weatherPanel}>
+                    <div className={styles.currentWeather}>
+                        <div className={styles.leftInfo}>
+                            <div>{nameCity()}</div>
+                            <div className={styles.descriptionWeather}>{descriptionWeather}
+                                <div className={styles.iconWeather}>
+                                    {currentImageWeather()}
+                                </div>
+                            </div>
+                            <div>
+                                {currentLanguage().content.today} {moment.unix(data?.current?.dt).format(actualLocation === 'EN' ? 'Do' : 'D')}
+                                {actualLocation !== 'EN' && currentLanguage().content.endDay} {currentMouth(moment.unix(data?.current?.dt).format('MMMM').toLowerCase())}
+                            </div>
+                        </div>
+                        <div
+                            className={styles.rightInfo}
+                            ref={tempRef}
+                        >{Math.round(data.current?.temp)}&deg;</div>
+                    </div>
+                    <div className={styles.hourly}>
+                        <div>{currentLanguage().content.hourly_forecast}</div>
+                        <div className={styles.iconHourse}>
+                            {[...new Array(10).keys()].map((_, index) =>
+                                <div key={index}>{currentImageWeather(data?.hourly[index]?.weather[0]?.icon)}</div>
+                            )}
+                        </div>
+                        <div className={styles.dayWeather}>
+                            <div className={styles.times}>
+                                {[...new Array(10).keys()]
+                                    .map(index =>
+                                        <div key={index}
+                                             className={styles.itemTime}>{moment.unix(data?.hourly[index + 1]?.dt).format('LT')}</div>
+                                    )}
+                            </div>
+                            <div className={styles.tempHourse}>
+                                {[...new Array(10).keys()]
+                                    .map(index =>
+                                        <div key={index}>{Math.round(data?.hourly[index + 1]?.temp)}&deg;</div>
+                                    )}
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        {currentLanguage().content.today} {moment.unix(data?.current?.dt).format(actualLocation === 'EN'?'Do':'D')}
-                        {actualLocation !== 'EN' && currentLanguage().content.endDay} {currentMouth(moment.unix(data?.current?.dt).format('MMMM').toLowerCase())}
+                    <div className={styles.week}>
+                        <div className={styles.leftInfoWeek}>
+                            <div className={styles.day}>
+                                <div>{currentLanguage().content.dayWeek.monday}</div>
+                                <div>{currentLanguage().content.dayWeek.tuesday}</div>
+                                <div>{currentLanguage().content.dayWeek.wednesday}</div>
+                                <div>{currentLanguage().content.dayWeek.thursday}</div>
+                                <div>{currentLanguage().content.dayWeek.friday}</div>
+                                <div>{currentLanguage().content.dayWeek.saturday}</div>
+                                <div>{currentLanguage().content.dayWeek.sunday}</div>
+                            </div>
+                            <div className={styles.numMouth}>
+                                {[...new Array(7).keys()]
+                                    .map(index =>
+                                        <div key={index}>
+                                            {moment.unix(data?.daily[index + 1]?.dt).format(actualLocation === 'EN' ? 'Do' : 'D')}
+                                            {actualLocation !== 'EN' && currentLanguage().content.endDay}&nbsp;
+                                            {currentMouth(moment.unix(data?.daily[index + 1]?.dt).format('MMMM').toLowerCase())}
+                                        </div>
+                                    )}
+                            </div>
+                            <div className={styles.dayTemp}>
+                                {[...new Array(7).keys()]
+                                    .map(index =>
+                                        <div key={index}>{Math.round(data.daily[index + 1]?.temp?.day)}&deg;</div>
+                                    )}
+                            </div>
+                            &nbsp;
+                            <div className={styles.nightTemp}>
+                                {[...new Array(7).keys()]
+                                    .map(index =>
+                                        <div key={index}>{Math.round(data.daily[index + 1]?.temp?.night)}&deg;</div>
+                                    )}
+                            </div>
+                        </div>
+                        <div className={styles.rightInfoWeek}>
+                            <div className={styles.moreInformation}>
+                                <div>{currentLanguage().content.sunrise}: {moment.unix(data?.current?.sunrise).format('LT')}</div>
+                                <div>{currentLanguage().content.sunset}: {moment.unix(data?.current?.sunset).format('LT')}</div>
+                                <div>{currentLanguage().content.humidity}: {data?.current?.humidity} %</div>
+                                <div>{currentLanguage().content.atmospheric_pressure}: {mmHgPressure} {currentLanguage().content.formats.pressure}</div>
+                                <div>{currentLanguage().content.wind_speed}: {data?.current?.wind_speed} {currentLanguage().content.formats.wind_speed}</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div
-                    className={styles.rightInfo}
-                    ref={tempRef}
-                >{Math.round(data.current?.temp)}&deg;</div>
-            </div>
-            <div className={styles.hourly}>
-                <div>{currentLanguage().content.hourly_forecast}</div>
-                <div className={styles.iconHourse}>
-                    {[...new Array(10).keys()].map((_, index) =>
-                        <div key={index}>{currentImageWeather(data?.hourly[index]?.weather[0]?.icon)}</div>
-                    )}
-                </div>
-                <div className={styles.dayWeather}>
-                    <div className={styles.times}>
-                        {[...new Array(10).keys()]
-                        .map(index =>
-                            <div key={index} className={styles.itemTime}>{moment.unix(data?.hourly[index+1]?.dt).format('LT')}</div>
-                        )}
-                    </div>
-                    <div className={styles.tempHourse}>
-                        {[...new Array(10).keys()]
-                            .map(index =>
-                                <div key={index}>{Math.round(data?.hourly[index+1]?.temp)}&deg;</div>
-                            )}
-                    </div>
-                </div>
-            </div>
-            <div className={styles.week}>
-                <div className={styles.leftInfoWeek}>
-                    <div className={styles.day}>
-                        <div>{currentLanguage().content.dayWeek.monday}</div>
-                        <div>{currentLanguage().content.dayWeek.tuesday}</div>
-                        <div>{currentLanguage().content.dayWeek.wednesday}</div>
-                        <div>{currentLanguage().content.dayWeek.thursday}</div>
-                        <div>{currentLanguage().content.dayWeek.friday}</div>
-                        <div>{currentLanguage().content.dayWeek.saturday}</div>
-                        <div>{currentLanguage().content.dayWeek.sunday}</div>
-                    </div>
-                    <div className={styles.numMouth}>
-                        {[...new Array(7).keys()]
-                            .map(index =>
-                                <div key={index}>
-                                    {moment.unix(data?.daily[index+1]?.dt).format(actualLocation === 'EN'?'Do':'D')}
-                                    {actualLocation !== 'EN' && currentLanguage().content.endDay}&nbsp;
-                                    {currentMouth(moment.unix(data?.daily[index+1]?.dt).format('MMMM').toLowerCase())}
-                                </div>
-                            )}
-                    </div>
-                    <div className={styles.dayTemp}>
-                        {[...new Array(7).keys()]
-                            .map(index =>
-                                <div key={index}>{Math.round(data.daily[index+1]?.temp?.day)}&deg;</div>
-                            )}
-                    </div>
-                    &nbsp;
-                    <div className={styles.nightTemp}>
-                        {[...new Array(7).keys()]
-                            .map(index =>
-                                <div key={index}>{Math.round(data.daily[index+1]?.temp?.night)}&deg;</div>
-                            )}
-                    </div>
-                </div>
-                <div className={styles.rightInfoWeek}>
-                    <div className={styles.moreInformation}>
-                        <div>{currentLanguage().content.sunrise}: {moment.unix(data?.current?.sunrise).format('LT')}</div>
-                        <div>{currentLanguage().content.sunset}: {moment.unix(data?.current?.sunset).format('LT')}</div>
-                        <div>{currentLanguage().content.humidity}: {data?.current?.humidity} %</div>
-                        <div>{currentLanguage().content.atmospheric_pressure}: {mmHgPressure} {currentLanguage().content.formats.pressure}</div>
-                        <div>{currentLanguage().content.wind_speed}: {data?.current?.wind_speed} {currentLanguage().content.formats.wind_speed}</div>
-                    </div>
-                </div>
-            </div>
+                :
+                <div className="lds-dual-ring"/>
+            }
         </div>
-            :
-        <div className="lds-dual-ring"/>
-        }
-    </div>
-  )
+    )
 }
 
 

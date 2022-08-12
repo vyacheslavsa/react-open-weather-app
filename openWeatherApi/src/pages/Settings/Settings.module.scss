@@ -1,3 +1,5 @@
+@import "../../variables";
+
 .content {
   height: 90vh;
   display: flex;
@@ -5,13 +7,13 @@
 
   .settingsBlock {
     border-radius: 20px;
-    background: linear-gradient(326deg, #22c1c3 0%, #672dfd 100%);
+    background: $blue-gradient;
     width: 500px;
     height: 500px;
     animation-name: one;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
-    box-shadow: 0 0 50px black;
+    box-shadow: 0 0 50px $black;
     padding: 20px;
     box-sizing: border-box;
 

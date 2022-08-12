@@ -1,6 +1,8 @@
+@import "../../variables";
+
 .mainStyle {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(349deg, #7ed5ff 0%, #ffffff00 100%);
+  background: $lite-blue-gradient;
 }

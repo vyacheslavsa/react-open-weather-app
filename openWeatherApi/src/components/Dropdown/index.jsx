@@ -10,6 +10,7 @@ function Dropdown({children}) {
     const [showList, setShowList] = useState(false);
     const dispatch = useDispatch();
     const currentLanguage = useSelector(state => state.data.interfaceLanguage);
+    const storageLang = JSON.parse(localStorage.getItem('CURRENT_LANG'));
 
     const showLanguage = (item) => {
         dispatch(setLanguage(item));
@@ -28,7 +29,7 @@ function Dropdown({children}) {
     return (
         <div className={styles.main} onClick={() => setShowList(!showList)}>
             {children}
-            <div className={styles.currentLanguage}>{currentLanguage}</div>
+            <div className={styles.currentLanguage}>{storageLang ? storageLang : currentLanguage}</div>
             <div className={styles.iconMore}>
                 <MoreInfo/>
             </div>

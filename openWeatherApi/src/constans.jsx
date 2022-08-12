@@ -2,6 +2,44 @@ export const APIkey = '162b8bbe283e22e16a8de4578a3c385b';
 export const format = 'metric';
 export const lang = 'EN';
 export const allLanguage = {
+    'EN':{
+        'content':{
+            'today':'Today',
+            'dayWeek':{
+                'monday':'Monday',
+                'tuesday':'Tuesday',
+                'wednesday': 'Wednesday',
+                'thursday':'Thursday',
+                'friday':'Friday',
+                'saturday':'Saturday',
+                'sunday': 'Sunday',
+            },
+            'sunrise':'Sunrise',
+            'sunset':'Sunset',
+            'humidity':'Humidity',
+            'atmospheric_pressure':'Atmospheric pressure',
+            'wind_speed':'Wind speed',
+            'hourly_forecast':'Hourly forecast',
+            'formats':{
+                'pressure':'mmHg',
+                'wind_speed':'m/s'
+            },
+            'month':{
+                'january':'January',
+                'february':'February',
+                'march':'March',
+                'april':'April',
+                'may': 'May',
+                'june':'June',
+                'july':'July',
+                'august':'August',
+                'september':'September',
+                'october':'October',
+                'november':'November',
+                'december':'December',
+            }
+        }
+    },
     'RU':{
         'content':{
             'today':'Сегодня',
@@ -39,44 +77,6 @@ export const allLanguage = {
                 'december':'Декабря',
             },
             'endDay':'-е'
-        }
-    },
-    'EN':{
-        'content':{
-            'today':'Today',
-            'dayWeek':{
-                'monday':'Monday',
-                'tuesday':'Tuesday',
-                'wednesday': 'Wednesday',
-                'thursday':'Thursday',
-                'friday':'Friday',
-                'saturday':'Saturday',
-                'sunday': 'Sunday',
-            },
-            'sunrise':'Sunrise',
-            'sunset':'Sunset',
-            'humidity':'Humidity',
-            'atmospheric_pressure':'Atmospheric pressure',
-            'wind_speed':'Wind speed',
-            'hourly_forecast':'Hourly forecast',
-            'formats':{
-                'pressure':'mmHg',
-                'wind_speed':'m/s'
-            },
-            'month':{
-                'january':'January',
-                'february':'February',
-                'march':'March',
-                'april':'April',
-                'may': 'May',
-                'june':'June',
-                'july':'July',
-                'august':'August',
-                'september':'September',
-                'october':'October',
-                'november':'November',
-                'december':'December',
-            }
         }
     }
 }

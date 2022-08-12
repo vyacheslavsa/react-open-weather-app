@@ -20,7 +20,7 @@ function Dropdown({ data, onClose, onCloseModal }) {
     if(!data.length && !isLoading) return(
         <div className={styles.main}>
             <div className={styles.name}>
-                No result :(
+                No found :(
             </div>
         </div>
     )
@@ -33,7 +33,7 @@ function Dropdown({ data, onClose, onCloseModal }) {
                     key={i}
                     onClick={() => updateCity(i)}
                 >
-                    {item.name} {item.country}
+                    {item.local_names ? item.local_names.ru : item.name} {item.country}
                 </div>
             )}
         </div>

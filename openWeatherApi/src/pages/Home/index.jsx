@@ -38,7 +38,7 @@ const Home = () => {
 
     useEffect(() => {
         if (currentCity.length) setShowCity(true);
-    }, [currentCity])
+    }, [currentCity]);
 
     return (
         <>

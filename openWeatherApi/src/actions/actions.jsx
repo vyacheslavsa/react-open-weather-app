@@ -21,7 +21,7 @@ export const getDataCurrentCity = (lat, lon) => {
     return dispatch => {
         dispatch(isLoading(true))
         axios
-            .get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${APIkey}`)
+            .get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${APIkey}`)
             .then((response) => {
                 dispatch(getCity(response.data))
                 dispatch(isLoading(false))
@@ -36,7 +36,7 @@ export const dataSearch = (city) => {
     return dispatch => {
         dispatch(searchLoading(true));
         axios
-            .get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIkey}`)
+            .get(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${APIkey}`)
             .then((response) => {
                 dispatch(getResultCities(response.data));
                 dispatch(searchLoading(false));

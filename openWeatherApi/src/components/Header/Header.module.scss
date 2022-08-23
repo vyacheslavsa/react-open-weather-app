@@ -2,20 +2,31 @@
 
 .head {
   width: 100vw;
-  height: 10vh;
+  height: 90px;
   display: flex;
   justify-content: space-between;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding: 0 50px;
   background: $blue-gradient;
   box-shadow: 0 0 20px $black;
   z-index: 1;
   box-sizing: border-box;
+  position: sticky;
+  left: 0;
+  top: 0;
+
+  @media (max-width: $mobile) {
+    box-shadow: none;
+    padding: 0 15px;
+  }
 
   .logo {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &>:first-child {
+      min-width: 48px;
+    }
 
     & > div {
       color: $white;
@@ -27,6 +38,12 @@
       margin-right: 10px;
       color: $white;
     }
+
+    .nameApp {
+      @media (max-width: $mobile) {
+        display: none;
+      }
+    }
   }
 
   .search {
@@ -35,6 +52,10 @@
     align-items: center;
     position: relative;
     margin: 0 50px;
+
+    @media (max-width: $mobile) {
+      margin: 0 10px;
+    }
   }
 
   .rightMenu {
@@ -74,6 +95,25 @@
           fill: $white;
         }
       }
+    }
+
+    @media (max-width: $mobile) {
+      display: none;
+    }
+  }
+
+  .rightMenuMobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & svg {
+      fill: $white;
+      cursor: pointer;
+    }
+
+    @media (min-width: $mobile) {
+      display: none;
     }
   }
 }

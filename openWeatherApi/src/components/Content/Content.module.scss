@@ -2,15 +2,25 @@
 
 .content {
   width: 100%;
-  height: 90vh;
+  height: 100%;
   background: transparent;
   perspective-origin: center;
   perspective: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 25px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+
+  @media (max-width: $mobile) {
+    padding: 0;
+  }
+
 
   .weatherPanel {
+    max-width: 800px;
+    width: 100%;
     box-sizing: border-box;
     padding: 30px;
     color: $white;
@@ -21,22 +31,41 @@
     animation-fill-mode: forwards;
     background: $blue-gradient;
 
+    @media (max-width: $mobile) {
+      border-radius: 0;
+    }
+
     .currentWeather { //1 блок
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid;
       padding-bottom: 30px;
 
+      @media (max-width: $mobile) {
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 15px;
+      }
+
       .leftInfo {
         font-size: 30px;
 
         .descriptionWeather {
           display: flex;
+
+          @media (max-width: $mobile) {
+            justify-content: center;
+          }
         }
       }
 
       .rightInfo {
         font-size: 90px;
+
+        @media (max-width: $mobile) {
+          font-size: 60px;
+        }
       }
 
       .iconWeather {
@@ -60,16 +89,30 @@
       justify-content: space-between;
       padding: 10px;
 
+      @media (max-width: $tablet) {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        position: relative;
+
+        .titleHourly {
+          position: sticky;
+          top: 0;
+          left: 0;
+        }
+      }
+
       .iconHourse {
         display: flex;
         justify-content: space-around;
         align-items: center;
+        min-width: 680px;
       }
 
       .dayWeather {
         .times {
           display: flex;
           justify-content: space-around;
+          min-width: 680px;
 
           .itemTime {
             font-size: 15px;
@@ -79,6 +122,7 @@
         .tempHourse {
           display: flex;
           justify-content: space-around;
+          min-width: 680px;
         }
       }
     }
@@ -95,12 +139,25 @@
         width: 50%;
         padding: 0 20px;
 
+        @media (max-width: $tablet) {
+          width: 100%;
+          border: none;
+        }
+
         .day {
           margin-right: 20px;
         }
 
         .numMouth {
           min-width: 140px;
+
+          @media (max-width: $mobile) {
+            min-width: auto;
+
+            .hideMobile {
+              display: none;
+            }
+          }
         }
       }
 
@@ -109,6 +166,16 @@
         display: flex;
         justify-content: flex-start;
         padding-left: 20px;
+
+        @media (max-width: $tablet) {
+          display: none;
+        }
+      }
+
+      @media (min-width: $tablet) {
+        .isMobileInfoWeek {
+          display: block;
+        }
       }
 
       .moreInformation {
@@ -149,5 +216,17 @@
 
   100% {
     transform: rotateX(0deg);
+  }
+}
+
+@media (min-width: $tablet) {
+  .lastContent {
+    display: none;
+  }
+}
+
+@media (max-width: $tablet) {
+  .lastContent {
+    padding: 20px 0;
   }
 }

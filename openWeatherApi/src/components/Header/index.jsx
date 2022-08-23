@@ -8,6 +8,7 @@ import {ReactComponent as IconCloud} from "../../image/logo-weather.svg";
 import CustomSearch from "../CustomSearch";
 import {ReactComponent as HomeIcon} from "../../image/home_FILL0_wght300_GRAD200_opsz48.svg";
 import {ReactComponent as SettingsIcon} from "../../image/settings_FILL0_wght300_GRAD200_opsz48.svg";
+import {ReactComponent as BurgerMenu} from "../../image/burger-menu.svg";
 
 export default function Header() {
     const dataResult = useSelector(state => state?.data?.resultSearch);
@@ -26,7 +27,7 @@ export default function Header() {
         <div className={styles.head}>
             <div className={styles.logo}>
                 <IconCloud/>
-                <div>Your Weather</div>
+                <div className={styles.nameApp}>Your Weather</div>
                 <div className={styles.search}>
                     <CustomSearch
                         height='40px'
@@ -44,6 +45,9 @@ export default function Header() {
             <div className={styles.rightMenu}>
                 <Link to='/home'><HomeIcon/></Link>
                 <Link to='/settings'><SettingsIcon/></Link>
+            </div>
+            <div className={styles.rightMenuMobile}>
+                <BurgerMenu/>
             </div>
         </div>
     );

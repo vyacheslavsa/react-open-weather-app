@@ -18,6 +18,7 @@ import {ReactComponent as CloudyIconNight} from "../../image/small_cloudy_night.
 import {ReactComponent as RainMoonIcon} from "../../image/rain_night_moon.svg"
 import {useSelector} from "react-redux";
 import {allLanguage} from "../../constans";
+import cs from "classnames";
 
 export default function Content({data, errors, loading}) {
 
@@ -111,15 +112,15 @@ export default function Content({data, errors, loading}) {
                 <div className={styles.weatherPanel}>
                     <div className={styles.currentWeather}>
                         <div className={styles.leftInfo}>
+                            <div>
+                                {currentLanguage().content.today} {moment.unix(data?.current?.dt).format(actualLocation === 'EN' ? 'Do' : 'D')}
+                                {actualLocation !== 'EN' && currentLanguage().content.endDay} {currentMouth(moment.unix(data?.current?.dt).format('MMMM').toLowerCase())}
+                            </div>
                             <div>{nameCity()}</div>
                             <div className={styles.descriptionWeather}>{descriptionWeather}
                                 <div className={styles.iconWeather}>
                                     {currentImageWeather()}
                                 </div>
-                            </div>
-                            <div>
-                                {currentLanguage().content.today} {moment.unix(data?.current?.dt).format(actualLocation === 'EN' ? 'Do' : 'D')}
-                                {actualLocation !== 'EN' && currentLanguage().content.endDay} {currentMouth(moment.unix(data?.current?.dt).format('MMMM').toLowerCase())}
                             </div>
                         </div>
                         <div
@@ -128,7 +129,7 @@ export default function Content({data, errors, loading}) {
                         >{Math.round(data.current?.temp)}&deg;</div>
                     </div>
                     <div className={styles.hourly}>
-                        <div>{currentLanguage().content.hourly_forecast}</div>
+                        <div className={styles.titleHourly}>{currentLanguage().content.hourly_forecast}</div>
                         <div className={styles.iconHourse}>
                             {[...new Array(10).keys()].map((_, index) =>
                                 <div key={index}>{currentImageWeather(data?.hourly[index]?.weather[0]?.icon)}</div>
@@ -167,7 +168,9 @@ export default function Content({data, errors, loading}) {
                                         <div key={index}>
                                             {moment.unix(data?.daily[index + 1]?.dt).format(actualLocation === 'EN' ? 'Do' : 'D')}
                                             {actualLocation !== 'EN' && currentLanguage().content.endDay}&nbsp;
-                                            {currentMouth(moment.unix(data?.daily[index + 1]?.dt).format('MMMM').toLowerCase())}
+                                            <span className={styles.hideMobile}>
+                                                {currentMouth(moment.unix(data?.daily[index + 1]?.dt).format('MMMM').toLowerCase())}
+                                            </span>
                                         </div>
                                     )}
                             </div>
@@ -186,6 +189,17 @@ export default function Content({data, errors, loading}) {
                             </div>
                         </div>
                         <div className={styles.rightInfoWeek}>
+                            <div className={styles.moreInformation}>
+                                <div>{currentLanguage().content.sunrise}: {moment.unix(data?.current?.sunrise).format('LT')}</div>
+                                <div>{currentLanguage().content.sunset}: {moment.unix(data?.current?.sunset).format('LT')}</div>
+                                <div>{currentLanguage().content.humidity}: {data?.current?.humidity} %</div>
+                                <div>{currentLanguage().content.atmospheric_pressure}: {mmHgPressure} {currentLanguage().content.formats.pressure}</div>
+                                <div>{currentLanguage().content.wind_speed}: {data?.current?.wind_speed} {currentLanguage().content.formats.wind_speed}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.lastContent}>
+                        <div className={cs(styles.rightInfoWeek, styles.isMobileInfoWeek)}>
                             <div className={styles.moreInformation}>
                                 <div>{currentLanguage().content.sunrise}: {moment.unix(data?.current?.sunrise).format('LT')}</div>
                                 <div>{currentLanguage().content.sunset}: {moment.unix(data?.current?.sunset).format('LT')}</div>

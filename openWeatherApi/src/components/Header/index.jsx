@@ -9,11 +9,13 @@ import CustomSearch from "../CustomSearch";
 import {ReactComponent as HomeIcon} from "../../image/home_FILL0_wght300_GRAD200_opsz48.svg";
 import {ReactComponent as SettingsIcon} from "../../image/settings_FILL0_wght300_GRAD200_opsz48.svg";
 import {ReactComponent as BurgerMenu} from "../../image/burger-menu.svg";
+import RightMenu from "../RightMenu";
 
 export default function Header() {
     const dataResult = useSelector(state => state?.data?.resultSearch);
     const [searchCity, setSearchCity] = useState('');
     const [openDropDownSearch, setOpenDropDownSearch] = useState(false);
+    const [openSideBar, setOpenSideBar] = useState(false);
     const dispatch = useDispatch();
 
     const getSearchCity = async (e) => {
@@ -26,7 +28,7 @@ export default function Header() {
     return (
         <div className={styles.head}>
             <div className={styles.logo}>
-                <IconCloud/>
+                <Link to='/home'><IconCloud/></Link>
                 <div className={styles.nameApp}>Your Weather</div>
                 <div className={styles.search}>
                     <CustomSearch
@@ -46,9 +48,10 @@ export default function Header() {
                 <Link to='/home'><HomeIcon/></Link>
                 <Link to='/settings'><SettingsIcon/></Link>
             </div>
-            <div className={styles.rightMenuMobile}>
+            <div className={styles.rightMenuMobile} onClick={() => setOpenSideBar(true)}>
                 <BurgerMenu/>
             </div>
+            <RightMenu state={openSideBar} onClose={() => setOpenSideBar(false)}/>
         </div>
     );
 }

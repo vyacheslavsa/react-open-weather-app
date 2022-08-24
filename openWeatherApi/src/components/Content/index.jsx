@@ -180,7 +180,7 @@ export default function Content({data, errors, loading}) {
                                         <div key={index}>{Math.round(data.daily[index + 1]?.temp?.day)}&deg;</div>
                                     )}
                             </div>
-                            &nbsp;
+                            <span className={styles.code}>&nbsp;</span>
                             <div className={styles.nightTemp}>
                                 {[...new Array(7).keys()]
                                     .map(index =>

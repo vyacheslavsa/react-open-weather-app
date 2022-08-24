@@ -11,9 +11,8 @@
   align-items: center;
   padding: 25px;
   box-sizing: border-box;
-  overflow-y: scroll;
 
-  @media (max-width: $mobile) {
+  @include max-media(xs) {
     padding: 0;
   }
 
@@ -31,11 +30,12 @@
     animation-fill-mode: forwards;
     background: $blue-gradient;
 
-    @media (max-width: $mobile) {
+    @include max-media(xs) {
       position: absolute;
       left: 0;
       top: 0;
       border-radius: 0;
+      height: 100%;
     }
 
     .currentWeather { //1 блок
@@ -44,7 +44,7 @@
       border-bottom: 1px solid;
       padding-bottom: 30px;
 
-      @media (max-width: $mobile) {
+      @include max-media(xs) {
         text-align: center;
         flex-direction: column;
         align-items: center;
@@ -57,7 +57,7 @@
         .descriptionWeather {
           display: flex;
 
-          @media (max-width: $mobile) {
+          @include max-media(xs) {
             justify-content: center;
           }
         }
@@ -66,7 +66,7 @@
       .rightInfo {
         font-size: 90px;
 
-        @media (max-width: $mobile) {
+        @include max-media(xs) {
           font-size: 60px;
         }
       }
@@ -92,7 +92,7 @@
       justify-content: space-between;
       padding: 10px;
 
-      @media (max-width: $tablet) {
+      @include max-media(sm) {
         overflow-x: scroll;
         overflow-y: hidden;
         position: relative;
@@ -142,7 +142,7 @@
         width: 50%;
         padding: 0 20px;
 
-        @media (max-width: $tablet) {
+        @include max-media(sm) {
           width: 100%;
           border: none;
         }
@@ -154,12 +154,18 @@
         .numMouth {
           min-width: 140px;
 
-          @media (max-width: $mobile) {
+          @include max-media(sm) {
             min-width: auto;
 
             .hideMobile {
               display: none;
             }
+          }
+        }
+
+        @include max-media(sm) {
+          .code {
+            display: none;
           }
         }
       }
@@ -170,12 +176,12 @@
         justify-content: flex-start;
         padding-left: 20px;
 
-        @media (max-width: $tablet) {
+        @include max-media(sm) {
           display: none;
         }
       }
 
-      @media (min-width: $tablet) {
+      @include max-media(sm) {
         .isMobileInfoWeek {
           display: block;
         }
@@ -211,25 +217,31 @@
   }
 }
 
-@keyframes one {
+@include min-media(xs) {
+  @keyframes one {
 
-  0% {
-    transform: rotateX(20deg);
-  }
+    0% {
+      transform: rotateX(20deg);
+    }
 
-  100% {
-    transform: rotateX(0deg);
-  }
-}
-
-@media (min-width: $tablet) {
-  .lastContent {
-    display: none;
+    100% {
+      transform: rotateX(0deg);
+    }
   }
 }
 
-@media (max-width: $tablet) {
+@include max-media(sm) {
+  display: none;
+}
+
+@include max-media(sm) {
   .lastContent {
     padding: 20px 0 0 0;
+  }
+}
+
+@include min-media(sm){
+  .lastContent {
+    display: none;
   }
 }

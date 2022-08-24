@@ -6,8 +6,5 @@
   align-items: center;
   background: $lite-blue-gradient;
   height: 100vh;
-
-  //@media (max-width: $mobile) {
-  //  overflow-y: scroll;
-  //}
+  overflow-x: hidden;
 }

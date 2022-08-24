@@ -14,9 +14,10 @@
   left: 0;
   top: 0;
 
-  @media (max-width: $mobile) {
+  @include max-media(xs) {
     box-shadow: none;
     padding: 0 15px;
+    border-bottom: 1px solid $white;
   }
 
   .logo {
@@ -40,7 +41,7 @@
     }
 
     .nameApp {
-      @media (max-width: $mobile) {
+      @include max-media(xs) {
         display: none;
       }
     }
@@ -53,7 +54,7 @@
     position: relative;
     margin: 0 50px;
 
-    @media (max-width: $mobile) {
+    @include max-media(xs) {
       margin: 0 10px;
     }
   }
@@ -97,7 +98,7 @@
       }
     }
 
-    @media (max-width: $mobile) {
+    @include max-media(xs) {
       display: none;
     }
   }
@@ -112,7 +113,7 @@
       cursor: pointer;
     }
 
-    @media (min-width: $mobile) {
+    @include min-media(xs) {
       display: none;
     }
   }

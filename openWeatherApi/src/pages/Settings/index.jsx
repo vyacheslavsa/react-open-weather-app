@@ -8,12 +8,7 @@ function Settings() {
     return (
         <MainLoyout>
             <div className={styles.content}>
-                <div style={{
-                    width: '500px',
-                    height: '500px',
-                    perspectiveOrigin: 'center',
-                    perspective: '500px'
-                }}>
+                <div className={styles.root}>
                     <div className={styles.settingsBlock}>
                         <Dropdown>
                             <div className={styles.leftContent}>

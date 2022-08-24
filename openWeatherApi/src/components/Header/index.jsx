@@ -9,7 +9,7 @@ import CustomSearch from "../CustomSearch";
 import {ReactComponent as HomeIcon} from "../../image/home_FILL0_wght300_GRAD200_opsz48.svg";
 import {ReactComponent as SettingsIcon} from "../../image/settings_FILL0_wght300_GRAD200_opsz48.svg";
 import {ReactComponent as BurgerMenu} from "../../image/burger-menu.svg";
-import RightMenu from "../RightMenu";
+import SideBar from "../../components/SideBar/index";
 
 export default function Header() {
     const dataResult = useSelector(state => state?.data?.resultSearch);
@@ -51,7 +51,7 @@ export default function Header() {
             <div className={styles.rightMenuMobile} onClick={() => setOpenSideBar(true)}>
                 <BurgerMenu/>
             </div>
-            <RightMenu state={openSideBar} onClose={() => setOpenSideBar(false)}/>
+            <SideBar state={openSideBar} onClose={() => setOpenSideBar(false)}/>
         </div>
     );
 }

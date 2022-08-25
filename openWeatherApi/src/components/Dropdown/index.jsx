@@ -4,6 +4,7 @@ import {ReactComponent as MoreInfo} from "../../image/expand_more_FILL0_wght400_
 import {useDispatch, useSelector} from "react-redux";
 import {setLanguage} from "../../redusers/reduser";
 import {allLanguage} from "../../constans";
+import cs from "classnames";
 
 
 function Dropdown({children}) {
@@ -26,29 +27,23 @@ function Dropdown({children}) {
         return result;
     };
 
-    return (
-        <div className={styles.main} onClick={() => setShowList(!showList)}>
+    return (<div className={styles.main} onClick={() => setShowList(!showList)}>
             {children}
             <div className={styles.currentLanguage}>{storageLang ? storageLang : currentLanguage}</div>
-            <div className={styles.iconMore}>
+            <div className={cs(styles.iconMore, {[styles.transform]: showList})}>
                 <MoreInfo/>
             </div>
-            {showList &&
-                <div className={styles.list}>
-                    {arrLang().map((item, index) =>
-                        <div
-                            className={styles.item}
-                            onClick={() => showLanguage(item)}
-                            key={index}
-                        >
-                            {arrLang()[index]}
-                        </div>
-                    )}
+            {showList && <div className={styles.list}>
+                {arrLang().map((item, index) => <div
+                    className={styles.item}
+                    onClick={() => showLanguage(item)}
+                    key={index}
+                >
+                    {arrLang()[index]}
+                </div>)}
 
-                </div>
-            }
-        </div>
-    );
+            </div>}
+        </div>);
 }
 
 export default Dropdown;

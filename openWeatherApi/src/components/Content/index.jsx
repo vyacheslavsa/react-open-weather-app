@@ -201,11 +201,11 @@ export default function Content({data, errors, loading}) {
                     <div className={styles.lastContent}>
                         <div className={cs(styles.rightInfoWeek, styles.isMobileInfoWeek)}>
                             <div className={styles.moreInformation}>
-                                <div>{currentLanguage().content.sunrise}: {moment.unix(data?.current?.sunrise).format('LT')}</div>
-                                <div>{currentLanguage().content.sunset}: {moment.unix(data?.current?.sunset).format('LT')}</div>
-                                <div>{currentLanguage().content.humidity}: {data?.current?.humidity} %</div>
-                                <div>{currentLanguage().content.atmospheric_pressure}: {mmHgPressure} {currentLanguage().content.formats.pressure}</div>
-                                <div>{currentLanguage().content.wind_speed}: {data?.current?.wind_speed} {currentLanguage().content.formats.wind_speed}</div>
+                                <div className={styles.itemMore}>{currentLanguage().content.sunrise}: {moment.unix(data?.current?.sunrise).format('LT')}</div>
+                                <div className={styles.itemMore}>{currentLanguage().content.sunset}: {moment.unix(data?.current?.sunset).format('LT')}</div>
+                                <div className={styles.itemMore}>{currentLanguage().content.humidity}: {data?.current?.humidity} %</div>
+                                <div className={styles.itemMore}>{currentLanguage().content.atmospheric_pressure}: {mmHgPressure} {currentLanguage().content.formats.pressure}</div>
+                                <div className={styles.itemMore}>{currentLanguage().content.wind_speed}: {data?.current?.wind_speed} {currentLanguage().content.formats.wind_speed}</div>
                             </div>
                         </div>
                     </div>

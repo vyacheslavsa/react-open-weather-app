@@ -1,9 +1,12 @@
 import React from 'react';
 import styles from './ButtonCustom.module.scss'
 
-const ButtonCustom = ({title, onClick}) => {
+const ButtonCustom = ({title, onClick, icon}) => {
     return (
-        <div className={styles.main} onClick={onClick}>{title}</div>
+        <div className={styles.main} onClick={onClick}>
+            {title}
+            {icon}
+        </div>
     );
 }
 

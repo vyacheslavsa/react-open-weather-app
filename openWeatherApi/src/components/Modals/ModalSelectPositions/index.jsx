@@ -5,6 +5,7 @@ import {dataSearch, getDataCurrentWeather} from "../../../actions/actions";
 import ButtonCustom from "../../ButtonCustom";
 import CustomSearch from "../../CustomSearch";
 import styles from './ModalSelectPositions.module.scss'
+import {ReactComponent as IconLocation} from "../../../image/location.svg";
 
 function ModalSelectPositions({ onClose,locateCity,showCity,currentCity }) {
     const dispatch = useDispatch();
@@ -27,11 +28,12 @@ function ModalSelectPositions({ onClose,locateCity,showCity,currentCity }) {
     }
 
     return (
-        <Modal title={'Select a region manually or define your location'}>
-            <div>
+        <Modal title={'Welcome to your weather app !!!'}>
+            <span style={{marginBottom: '20px'}}>Search your city in the search or use the geolocator</span>
+            <div style={{display: 'flex'}}>
                 <div className={styles.searchContainer}>
                     <CustomSearch
-                        height='40px'
+                        height='50px'
                         onChange={(e)=>setSearchCity(e.target.value)}
                         onKeyDown={(e)=> getSearchCity(e)}
                         deleteValue={()=>setSearchCity('')}
@@ -46,21 +48,22 @@ function ModalSelectPositions({ onClose,locateCity,showCity,currentCity }) {
                 <div className={styles.btn}>
                     <ButtonCustom
                         onClick={locateCity}
-                        title='Detect location'
+                        title='My location'
+                        icon={<IconLocation/>}
                     />
                 </div>
-                {showCity &&
-                    <>
-                        <div>Your city: {currentCity[0].name}?</div>
-                        <div className={styles.btnBlock}>
-                            <ButtonCustom
-                                onClick={() => saveCity(currentCity[0])}
-                                title='Сonfirm'
-                            />
-                        </div>
-                    </>
-                }
             </div>
+            {showCity &&
+                <>
+                    <div>Your city: {currentCity[0].name}?</div>
+                    <div className={styles.btnBlock}>
+                        <ButtonCustom
+                            onClick={() => saveCity(currentCity[0])}
+                            title='Yes'
+                        />
+                    </div>
+                </>
+            }
         </Modal>
     );
 }

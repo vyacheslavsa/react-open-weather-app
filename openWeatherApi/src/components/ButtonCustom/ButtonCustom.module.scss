@@ -2,11 +2,11 @@
 
 .main {
   width: fit-content;
-  padding: 0 15px;
+  padding: 0 15px 0 30px;
   min-width: 100px;
   height: 50px;
   border-radius: 10px;
-  background-color: $blue;
+  background: $side-bar-gradient;
   color: $white;
   display: flex;
   align-items: center;
@@ -16,10 +16,18 @@
   font-weight: bold;
   -webkit-user-select: none;
   box-sizing: border-box;
+  transition: 0.5s;
+
+  & svg {
+    width: 10px;
+    height: 10px;
+    path {
+      fill: $white;
+    }
+  }
 
   &:hover {
-    background-color: $blue006;
-    transition: 0.3s;
+    transition: 0.5s;
   }
 
   &:active {

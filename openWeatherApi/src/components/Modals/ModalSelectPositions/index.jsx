@@ -33,7 +33,7 @@ function ModalSelectPositions({ onClose,locateCity,showCity,currentCity }) {
             <div style={{display: 'flex'}}>
                 <div className={styles.searchContainer}>
                     <CustomSearch
-                        height='50px'
+                        height={'40px'}
                         onChange={(e)=>setSearchCity(e.target.value)}
                         onKeyDown={(e)=> getSearchCity(e)}
                         deleteValue={()=>setSearchCity('')}

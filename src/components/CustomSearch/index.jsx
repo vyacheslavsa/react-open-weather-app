@@ -5,18 +5,20 @@ import Dropdown from "../DropDownSearch";
 import cs from 'classnames';
 
 const CustomSearch = ({
-    width,
-    height,
-    onChange,
-    deleteValue,
-    onClose,
-    onKeyDown,
-    value,
-    openCityList,
-    dataResult,
-    onCloseDropdown,
-    onCloseModal
-}) => {
+                          width,
+                          height,
+                          onChange,
+                          deleteValue,
+                          onClose,
+                          onKeyDown,
+                          value,
+                          openCityList,
+                          dataResult,
+                          onCloseDropdown,
+                          onCloseModal,
+                          clearPosition,
+                          positionDropdown
+                      }) => {
 
     const customRef = useRef();
 
@@ -38,7 +40,7 @@ const CustomSearch = ({
     return (
         <>
             <div
-                className={cs(styles.root,{[styles.blur]:blur})}
+                className={cs(styles.root, {[styles.blur]: blur})}
                 style={{width: width, height: height}}
                 ref={customRef}
                 onFocus={() => onFocus()}
@@ -51,11 +53,18 @@ const CustomSearch = ({
                     value={value}
                     style={{background: 'transparent'}}
                 />
-                {value && <div className={styles.iconDelete}>
+                {value && <div className={styles.iconDelete} style={{top: clearPosition}}>
                     <IconDelete onClick={() => cleanField()}/>
                 </div>}
             </div>
-            {openCityList && <Dropdown data={dataResult} onClose={onCloseDropdown} onCloseModal={onCloseModal}/>}
+            {openCityList &&
+                <Dropdown
+                    data={dataResult}
+                    onClose={onCloseDropdown}
+                    onCloseModal={onCloseModal}
+                    positionDropdown={positionDropdown}
+                />
+            }
         </>
     );
 }

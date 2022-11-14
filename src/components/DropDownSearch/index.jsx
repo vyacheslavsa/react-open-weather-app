@@ -3,7 +3,7 @@ import styles from './DropDown.module.scss'
 import {getDataCurrentWeather} from "../../actions/actions";
 import {useDispatch, useSelector} from "react-redux";
 
-function Dropdown({data, onClose, onCloseModal}) {
+function Dropdown({data, onClose, onCloseModal, positionDropdown}) {
     const dispatch = useDispatch();
     const isLoading = useSelector(state => state?.data?.searchLoading);
 
@@ -26,7 +26,7 @@ function Dropdown({data, onClose, onCloseModal}) {
     )
 
     return (
-        <div className={styles.main}>
+        <div className={styles.main} style={positionDropdown && {top: positionDropdown}}>
             {data.map((item, i) =>
                 <div
                     className={styles.name}

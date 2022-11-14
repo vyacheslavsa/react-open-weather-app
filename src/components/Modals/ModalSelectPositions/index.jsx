@@ -7,7 +7,7 @@ import CustomSearch from "../../CustomSearch";
 import styles from './ModalSelectPositions.module.scss'
 import {ReactComponent as IconLocation} from "../../../image/location.svg";
 
-function ModalSelectPositions({ onClose,locateCity,showCity,currentCity }) {
+function ModalSelectPositions({onClose, locateCity, showCity, currentCity}) {
     const dispatch = useDispatch();
     const dataResult = useSelector(state => state?.data?.resultSearch);
     const [searchCity, setSearchCity] = useState('');
@@ -21,7 +21,7 @@ function ModalSelectPositions({ onClose,locateCity,showCity,currentCity }) {
     }
 
     const getSearchCity = async (e) => {
-        if(e.key === 'Enter'){
+        if (e.key === 'Enter') {
             await dispatch(dataSearch(searchCity))
             setOpenDropDownSearch(true)
         }
@@ -33,16 +33,18 @@ function ModalSelectPositions({ onClose,locateCity,showCity,currentCity }) {
             <div style={{display: 'flex'}}>
                 <div className={styles.searchContainer}>
                     <CustomSearch
-                        height={'40px'}
-                        onChange={(e)=>setSearchCity(e.target.value)}
-                        onKeyDown={(e)=> getSearchCity(e)}
-                        deleteValue={()=>setSearchCity('')}
-                        onClose={()=>setOpenDropDownSearch(false)}
+                        height={'50px'}
+                        onChange={(e) => setSearchCity(e.target.value)}
+                        onKeyDown={(e) => getSearchCity(e)}
+                        deleteValue={() => setSearchCity('')}
+                        onClose={() => setOpenDropDownSearch(false)}
                         value={searchCity}
                         openCityList={openDropDownSearch}
                         dataResult={dataResult}
-                        onCloseDropdown={()=>setOpenDropDownSearch(false)}
+                        onCloseDropdown={() => setOpenDropDownSearch(false)}
                         onCloseModal={onClose}
+                        clearPosition={'10px'}
+                        positionDropdown={'55px'}
                     />
                 </div>
                 <div className={styles.btn}>

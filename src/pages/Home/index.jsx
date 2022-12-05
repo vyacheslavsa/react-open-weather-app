@@ -50,7 +50,6 @@ const Home = () => {
                     currentCity={currentCity}
                 />
             </MainLoyout>
-
             {
                 modalSelectRegion &&
                 <ModalSelectPositions

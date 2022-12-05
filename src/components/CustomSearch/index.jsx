@@ -14,7 +14,6 @@ const CustomSearch = ({
                           value,
                           openCityList,
                           dataResult,
-                          onCloseDropdown,
                           onCloseModal,
                           clearPosition,
                           positionDropdown
@@ -60,7 +59,7 @@ const CustomSearch = ({
             {openCityList &&
                 <Dropdown
                     data={dataResult}
-                    onClose={onCloseDropdown}
+                    onClose={cleanField}
                     onCloseModal={onCloseModal}
                     positionDropdown={positionDropdown}
                 />

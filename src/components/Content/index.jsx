@@ -117,7 +117,8 @@ export default function Content({data, errors, loading}) {
                                 {actualLocation !== 'EN' && currentLanguage().content.endDay} {currentMouth(moment.unix(data?.current?.dt).format('MMMM').toLowerCase())}
                             </div>
                             <div>{nameCity()}</div>
-                            <div className={styles.descriptionWeather}>{descriptionWeather}
+                            <div className={styles.descriptionWeather}>
+                                {descriptionWeather}
                                 <div className={styles.iconWeather}>
                                     {currentImageWeather()}
                                 </div>
@@ -201,8 +202,8 @@ export default function Content({data, errors, loading}) {
                     <div className={styles.lastContent}>
                         <div className={cs(styles.rightInfoWeek, styles.isMobileInfoWeek)}>
                             <div className={styles.moreInformation}>
-                                <div className={styles.itemMore}>{currentLanguage().content.sunrise}: {moment.unix(data?.current?.sunrise).format('LT')}</div>
-                                <div className={styles.itemMore}>{currentLanguage().content.sunset}: {moment.unix(data?.current?.sunset).format('LT')}</div>
+                                <div className={styles.itemMore}>{currentLanguage().content.sunrise}: {moment.unix((data?.current?.sunrise + data.timezone_offset) - 10800).format('LT')}</div>
+                                <div className={styles.itemMore}>{currentLanguage().content.sunset}: {moment.unix((data?.current?.sunset + data.timezone_offset) - 10800).format('LT')}</div>
                                 <div className={styles.itemMore}>{currentLanguage().content.humidity}: {data?.current?.humidity} %</div>
                                 <div className={styles.itemMore}>{currentLanguage().content.atmospheric_pressure}: {mmHgPressure} {currentLanguage().content.formats.pressure}</div>
                                 <div className={styles.itemMore}>{currentLanguage().content.wind_speed}: {data?.current?.wind_speed} {currentLanguage().content.formats.wind_speed}</div>

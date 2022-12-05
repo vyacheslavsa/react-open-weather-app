@@ -1,5 +1,4 @@
 const defaultState = {//значение по умолчанию
-    cash: 0,
     currentWeather: {},
     errors: {},
     loading: true,
@@ -23,8 +22,6 @@ const allActions = {
 //action = {type:"", payload:""} - формат объекта type - action значение ,payload - новое значение
 export const reduser = (state = defaultState, action) => {
     switch (action.type) {
-        case allActions.ADD_CASH:
-            return {...state, cash: state.cash + action.payload};//первый параметр текущее состояние скопированно, второй действие которое мы выплняем
         case allActions.GET_DATA_WEATHER:
             return {...state, currentWeather: action.payload};
         case allActions.DETECT_ERROR:

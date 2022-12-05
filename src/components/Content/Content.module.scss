@@ -12,6 +12,11 @@
   padding: 25px;
   box-sizing: border-box;
 
+  //disable selection on content
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+
   @include max-media(xs) {
     padding: 0;
   }
@@ -202,10 +207,15 @@
     align-items: center;
     font-size: 25px;
     font-weight: bold;
-    border: 2px solid $black;
     padding: 30px;
     border-radius: 15px;
-    color: $gray;
+    background-color: $white;
+    box-shadow: 5px 5px 15px $black;
+    color: $red;
+
+    @include max-media(xs){
+      font-size: 15px;
+    }
 
     & svg {
       margin-right: 10px;

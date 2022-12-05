@@ -11,18 +11,36 @@
   overflow: hidden;
   color: #989898;
 
-  .name {
+  .nameList {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 5px;
     border-bottom: 1px solid $grayC9;
     cursor: pointer;
-    height: 40px;
+    min-height: 40px;
     box-sizing: border-box;
+    font-size: 16px;
+
+    .item {
+      display: flex;
+      flex-direction: column;
+
+      >:first-child {
+        font-size: 17px;
+        text-align: center;
+      }
+
+      >:last-child {
+        text-align: center;
+        font-size: 13px;
+        color: $grayC2;
+      }
+    }
+
 
     &:hover {
-      background-color: $grayC9;
+      background-color: $grayE2;
     }
   }
 

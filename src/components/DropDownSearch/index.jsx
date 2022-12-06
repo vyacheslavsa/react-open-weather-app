@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './DropDown.module.scss'
-import {getDataCurrentWeather} from "../../actions/actions";
+import {getDataCurrentCity, getDataCurrentWeather} from "../../actions/actions";
 import {useDispatch, useSelector} from "react-redux";
 
 function Dropdown({data, onClose, onCloseModal, positionDropdown}) {
@@ -12,6 +12,7 @@ function Dropdown({data, onClose, onCloseModal, positionDropdown}) {
     const updateCity = (i) => {
         dispatch({type: "GET_DATA_WEATHER", payload: {}});
         dispatch(getDataCurrentWeather(data[i].lat, data[i].lon, currentLanguage));
+        dispatch(getDataCurrentCity(data[i].lat, data[i].lon))
         localStorage.setItem('GEOLOCATIONS', JSON.stringify(data[i]));
         onClose();
         if (onCloseModal) {
@@ -36,11 +37,13 @@ function Dropdown({data, onClose, onCloseModal, positionDropdown}) {
                     onClick={() => updateCity(i)}
                 >
                     <div className={styles.item}>
-                        <div>{item.name} {item.country}</div>
-                        <div>lat:{item.lat} lon:{item.lon}</div>
+                        <div>
+                            <p>{item.local_names.ru}</p>
+                            <p>{item.state} {item.country}</p>
+                        </div>
+                        <div>lat: {item.lat} lon: {item.lon}</div>
                     </div>
                 </div>
-
             )}
         </div>
     );

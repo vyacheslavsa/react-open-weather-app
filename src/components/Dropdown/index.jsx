@@ -28,13 +28,14 @@ function Dropdown({children}) {
             <MoreInfo/>
         </div>
         {showList && <div className={styles.list}>
-            {arrayLang.map((item, index) => <div
-                className={styles.item}
-                onClick={() => showLanguage(item)}
-                key={index}
-            >
-                {arrayLang[index].toUpperCase()}
-            </div>)}
+            {arrayLang.map((item, index) =>
+                <div
+                    className={styles.item}
+                    onClick={() => showLanguage(item)}
+                    key={index}
+                >
+                    {arrayLang[index].toUpperCase()}
+                </div>)}
 
         </div>}
     </div>);

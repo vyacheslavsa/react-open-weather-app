@@ -5,13 +5,15 @@ import {dataSearch, getDataCurrentWeather} from "../../../actions/actions";
 import ButtonCustom from "../../ButtonCustom";
 import CustomSearch from "../../CustomSearch";
 import styles from './ModalSelectPositions.module.scss'
-import {ReactComponent as IconLocation} from "../../../image/location.svg";
+import {ReactComponent as IconLocation} from "../../../image/locationSvg.svg";
+import {useMediaQuery} from "react-responsive";
 
 function ModalSelectPositions({onClose, locateCity, showCity, currentCity}) {
     const dispatch = useDispatch();
     const dataResult = useSelector(state => state?.data?.resultSearch);
     const [searchCity, setSearchCity] = useState('');
     const [openDropDownSearch, setOpenDropDownSearch] = useState(false);
+    const isMobile = useMediaQuery({query: '(max-width: 575px)'})
 
     const saveCity = (currenCity) => {
         onClose();
@@ -29,8 +31,8 @@ function ModalSelectPositions({onClose, locateCity, showCity, currentCity}) {
 
     return (
         <Modal title={'Welcome to your weather app !!!'}>
-            <span style={{marginBottom: '20px'}}>Search your city in the search or use the geolocator</span>
-            <div style={{display: 'flex'}}>
+            <span style={{marginBottom: '20px', textAlign: "center"}}>Search your city in the search or use the geolocator</span>
+            <div className={styles.content}>
                 <div className={styles.searchContainer}>
                     <CustomSearch
                         height={'50px'}
@@ -52,6 +54,7 @@ function ModalSelectPositions({onClose, locateCity, showCity, currentCity}) {
                         onClick={locateCity}
                         title='My location'
                         icon={<IconLocation/>}
+                        width={isMobile && '100%'}
                     />
                 </div>
             </div>

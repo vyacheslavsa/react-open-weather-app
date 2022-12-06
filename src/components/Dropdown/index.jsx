@@ -12,6 +12,8 @@ function Dropdown({children}) {
     const dispatch = useDispatch();
     const currentLanguage = useSelector(state => state.data.interfaceLanguage);
     const storageLang = JSON.parse(localStorage.getItem('CURRENT_LANG'));
+    const lang = storageLang || currentLanguage;
+    const arrayLang = Object.keys(allLanguage);
 
     const showLanguage = (item) => {
         dispatch(setLanguage(item));
@@ -19,31 +21,23 @@ function Dropdown({children}) {
         localStorage.setItem('CURRENT_LANG', JSON.stringify(item))
     };
 
-    const arrLang = () => {
-        const result = [];
-        for (const key in allLanguage) {
-            result.push(key)
-        }
-        return result;
-    };
-
     return (<div className={styles.main} onClick={() => setShowList(!showList)}>
-            {children}
-            <div className={styles.currentLanguage}>{storageLang ? storageLang : currentLanguage}</div>
-            <div className={cs(styles.iconMore, {[styles.transform]: showList})}>
-                <MoreInfo/>
-            </div>
-            {showList && <div className={styles.list}>
-                {arrLang().map((item, index) => <div
-                    className={styles.item}
-                    onClick={() => showLanguage(item)}
-                    key={index}
-                >
-                    {arrLang()[index]}
-                </div>)}
+        {children}
+        <div className={styles.currentLanguage}>{lang.toUpperCase()}</div>
+        <div className={cs(styles.iconMore, {[styles.transform]: showList})}>
+            <MoreInfo/>
+        </div>
+        {showList && <div className={styles.list}>
+            {arrayLang.map((item, index) => <div
+                className={styles.item}
+                onClick={() => showLanguage(item)}
+                key={index}
+            >
+                {arrayLang[index].toUpperCase()}
+            </div>)}
 
-            </div>}
-        </div>);
+        </div>}
+    </div>);
 }
 
 export default Dropdown;

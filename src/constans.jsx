@@ -1,8 +1,8 @@
 export const APIkey = process.env.REACT_APP_API_KEY;
 export const format = 'metric';
-export const lang = 'EN';
+export const lang = 'en';
 export const allLanguage = {
-    EN: {
+    en: {
         content: {
             today: 'Today',
             dayWeek: {
@@ -48,7 +48,7 @@ export const allLanguage = {
             select_lang: 'Select Language'
         }
     },
-    RU: {
+    ru: {
         content: {
             today: 'Сегодня',
             dayWeek: {

@@ -38,7 +38,7 @@ function Dropdown({data, onClose, onCloseModal, positionDropdown}) {
                 >
                     <div className={styles.item}>
                         <div>
-                            <p>{item.local_names.ru}</p>
+                            <p>{item?.local_names ? item?.local_names[currentLanguage] : item.name}</p>
                             <p>{item.state} {item.country}</p>
                         </div>
                         <div>lat: {item.lat} lon: {item.lon}</div>

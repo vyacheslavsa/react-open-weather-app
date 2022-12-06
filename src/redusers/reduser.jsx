@@ -5,7 +5,7 @@ const defaultState = {//значение по умолчанию
     searchLoading: true,
     currentCity: [],
     resultSearch: [],
-    interfaceLanguage: 'EN'
+    interfaceLanguage: 'en'
 };
 
 const allActions = {

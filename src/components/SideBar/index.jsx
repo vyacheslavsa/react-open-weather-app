@@ -9,26 +9,28 @@ import {useSelector} from "react-redux";
 
 const SideBar = ({onClose, state}) => {
     const currentLang = useSelector(state => state?.data?.interfaceLanguage)
+    const localStoreWeather = JSON.parse(localStorage.getItem('CURRENT_LANG'));
+    const lang = localStoreWeather || currentLang;
 
     return (
         <div className={cs(styles.root, {[styles.openBar]: state})}>
             <div className={styles.header}>
                 <div onClick={() => onClose()} className={styles.backBlock}>
                     <IconBack/>
-                    <span>{allLanguage[currentLang].sideBar.back}</span>
+                    <span>{allLanguage[lang].sideBar.back}</span>
                 </div>
                 <div style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
-                }}>{allLanguage[currentLang].sideBar.menu}</div>
+                }}>{allLanguage[lang].sideBar.menu}</div>
             </div>
             <div className={styles.content} onClick={() => onClose()}>
                 <Link to='/settings'>
                     <div className={styles.item}>
                         <div className={styles.itemContent}>
                             <SettingsIcon/>
-                            <span>{allLanguage[currentLang].sideBar.settings}</span>
+                            <span>{allLanguage[lang]?.sideBar.settings}</span>
                         </div>
                     </div>
                 </Link>

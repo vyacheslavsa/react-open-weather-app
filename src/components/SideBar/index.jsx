@@ -17,21 +17,20 @@ const SideBar = ({onClose, state}) => {
             <div className={styles.header}>
                 <div onClick={() => onClose()} className={styles.backBlock}>
                     <IconBack/>
-                    {/*{allLanguage[lang].sideBar.back}*/}
-                    <span>back</span>
+                    <span>{allLanguage[lang].sideBar.back}</span>
                 </div>
                 <div style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
-                }}>menu</div>
+                }}>{allLanguage[lang].sideBar.menu}</div>
             </div>
             <div className={styles.content} onClick={() => onClose()}>
                 <Link to='/settings'>
                     <div className={styles.item}>
                         <div className={styles.itemContent}>
                             <SettingsIcon/>
-                            <span>settings</span>
+                            <span>{allLanguage[lang].sideBar.settings}</span>
                         </div>
                     </div>
                 </Link>

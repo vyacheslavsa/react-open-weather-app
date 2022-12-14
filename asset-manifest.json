@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-open-weather-app/static/css/main.e2f53b1d.css",
-    "main.js": "/react-open-weather-app/static/js/main.159449b3.js",
+    "main.css": "/react-open-weather-app/static/css/main.d77814b1.css",
+    "main.js": "/react-open-weather-app/static/js/main.18dcff32.js",
     "static/js/787.20ca06ea.chunk.js": "/react-open-weather-app/static/js/787.20ca06ea.chunk.js",
     "static/media/rain_night_moon.svg": "/react-open-weather-app/static/media/rain_night_moon.926b26f253ab8b5d98a021f883dfde3f.svg",
     "static/media/logo-weather.svg": "/react-open-weather-app/static/media/logo-weather.86dc217007eeac3bbb067a05165d269c.svg",
@@ -26,12 +26,12 @@
     "static/media/back.svg": "/react-open-weather-app/static/media/back.9933390d8fe945a2bdb24e5c10b66aa2.svg",
     "static/media/expand_more_FILL0_wght400_GRAD0_opsz48.svg": "/react-open-weather-app/static/media/expand_more_FILL0_wght400_GRAD0_opsz48.45a1a7112bf6255f362b38eaa86ac6de.svg",
     "static/media/burger-menu.svg": "/react-open-weather-app/static/media/burger-menu.113d59e2703636dfe157ec8ec962d598.svg",
-    "main.e2f53b1d.css.map": "/react-open-weather-app/static/css/main.e2f53b1d.css.map",
-    "main.159449b3.js.map": "/react-open-weather-app/static/js/main.159449b3.js.map",
+    "main.d77814b1.css.map": "/react-open-weather-app/static/css/main.d77814b1.css.map",
+    "main.18dcff32.js.map": "/react-open-weather-app/static/js/main.18dcff32.js.map",
     "787.20ca06ea.chunk.js.map": "/react-open-weather-app/static/js/787.20ca06ea.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e2f53b1d.css",
-    "static/js/main.159449b3.js"
+    "static/css/main.d77814b1.css",
+    "static/js/main.18dcff32.js"
   ]
 }

@@ -55,8 +55,6 @@ const SkeletonContent = () => {
                             :
                             <LoadingContainer width={'100%'} height={'140px'}/>
                     }
-
-
                 </div>
                 <div className={styles.rightInfoWeek}>
                     <div className={styles.moreInformation}>

@@ -138,7 +138,8 @@ export default function Content({data, errors, loading}) {
                         </div>
                     </div>
                     <div className={styles.hourly}>
-                        <div className={styles.titleHourly}>{dataCurrentLanguage(allLanguage).content.hourly_forecast}</div>
+                        <div
+                            className={styles.titleHourly}>{dataCurrentLanguage(allLanguage).content.hourly_forecast}</div>
                         <div className={styles.iconHourse}>
                             {[...new Array(10).keys()].map((_, index) =>
                                 <div key={index}>{currentImageWeather(data?.hourly[index]?.weather[0]?.icon)}</div>
@@ -164,11 +165,15 @@ export default function Content({data, errors, loading}) {
                         <div className={styles.leftInfoWeek}>
                             <div className={styles.day}>
                                 {[...new Array(7).keys()].map(index =>
-                                    <div key={index}>
+                                    <div key={index}
+                                         className={cs({[styles.dayOff]: moment.unix(data?.daily[index]?.dt).format('dddd') === 'Saturday' ||
+                                             moment.unix(data?.daily[index]?.dt).format('dddd') === 'Sunday'
+                                         })}
+                                    >
                                         {currentLang === 'en' ?
-                                                moment.unix(data?.daily[index]?.dt).format('dddd')
-                                                :
-                                                getDayWeek(moment.unix(data?.daily[index]?.dt).format('dddd'))
+                                            moment.unix(data?.daily[index+1]?.dt).format('dddd')
+                                            :
+                                            getDayWeek(moment.unix(data?.daily[index+1]?.dt).format('dddd'))
                                         }
                                     </div>
                                 )}

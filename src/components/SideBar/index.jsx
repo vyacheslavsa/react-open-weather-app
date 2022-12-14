@@ -14,27 +14,32 @@ const SideBar = ({onClose, state}) => {
 
     return (
         <div className={cs(styles.root, {[styles.openBar]: state})}>
-            <div className={styles.header}>
-                <div onClick={() => onClose()} className={styles.backBlock}>
-                    <IconBack/>
-                    <span>{allLanguage[lang].sideBar.back}</span>
-                </div>
-                <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                }}>{allLanguage[lang].sideBar.menu}</div>
-            </div>
-            <div className={styles.content} onClick={() => onClose()}>
-                <Link to='/settings'>
-                    <div className={styles.item}>
-                        <div className={styles.itemContent}>
-                            <SettingsIcon/>
-                            <span>{allLanguage[lang].sideBar.settings}</span>
+            {
+                allLanguage[lang].sideBar &&
+                <>
+                    <div className={styles.header}>
+                        <div onClick={() => onClose()} className={styles.backBlock}>
+                            <IconBack/>
+                            <span>{allLanguage[lang].sideBar.back}</span>
                         </div>
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>{allLanguage[lang].sideBar.menu}</div>
                     </div>
-                </Link>
-            </div>
+                    <div className={styles.content} onClick={() => onClose()}>
+                        <Link to='/settings'>
+                            <div className={styles.item}>
+                                <div className={styles.itemContent}>
+                                    <SettingsIcon/>
+                                    <span>{allLanguage[lang].sideBar.settings}</span>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+                </>
+            }
         </div>
     );
 }

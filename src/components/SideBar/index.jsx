@@ -12,36 +12,41 @@ const SideBar = ({onClose, state}) => {
     const localStoreWeather = JSON.parse(localStorage.getItem('CURRENT_LANG'));
     const lang = localStoreWeather || currentLang;
 
-    console.log(allLanguage[lang].sideBar)
+    const dataCurrentLanguage = (value) => {
+        let result = null;
+        for (const key in value) {
+            if (lang === key) result = value[key]
+        }
+        return result;
+    }
 
     return (
         <div className={cs(styles.root, {[styles.openBar]: state})}>
-            {
-                allLanguage[lang]?.sideBar &&
-                <>
-                    <div className={styles.header}>
-                        <div onClick={() => onClose()} className={styles.backBlock}>
-                            <IconBack/>
-                            <span>{allLanguage[lang].sideBar.back}</span>
+            <div className={styles.header}>
+                <div onClick={() => onClose()} className={styles.backBlock}>
+                    <IconBack/>
+                    <span>{dataCurrentLanguage(allLanguage).sideBar.back}</span>
+                </div>
+                <div
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}
+                >
+                    {dataCurrentLanguage(allLanguage).sideBar.menu}
+                </div>
+            </div>
+            <div className={styles.content} onClick={() => onClose()}>
+                <Link to='/settings'>
+                    <div className={styles.item}>
+                        <div className={styles.itemContent}>
+                            <SettingsIcon/>
+                            <span>{dataCurrentLanguage(allLanguage).sideBar.settings}</span>
                         </div>
-                        <div style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                        }}>{allLanguage[lang].sideBar.menu}</div>
                     </div>
-                    <div className={styles.content} onClick={() => onClose()}>
-                        <Link to='/settings'>
-                            <div className={styles.item}>
-                                <div className={styles.itemContent}>
-                                    <SettingsIcon/>
-                                    <span>{allLanguage[lang].sideBar.settings}</span>
-                                </div>
-                            </div>
-                        </Link>
-                    </div>
-                </>
-            }
+                </Link>
+            </div>
         </div>
     );
 }

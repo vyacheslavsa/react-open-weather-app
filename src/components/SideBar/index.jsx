@@ -12,10 +12,12 @@ const SideBar = ({onClose, state}) => {
     const localStoreWeather = JSON.parse(localStorage.getItem('CURRENT_LANG'));
     const lang = localStoreWeather || currentLang;
 
+    console.log(allLanguage[lang].sideBar)
+
     return (
         <div className={cs(styles.root, {[styles.openBar]: state})}>
             {
-                allLanguage[lang].sideBar &&
+                allLanguage[lang]?.sideBar &&
                 <>
                     <div className={styles.header}>
                         <div onClick={() => onClose()} className={styles.backBlock}>

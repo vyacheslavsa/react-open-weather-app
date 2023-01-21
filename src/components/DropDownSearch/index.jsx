@@ -21,9 +21,9 @@ function Dropdown({data, onClose, onCloseModal, positionDropdown}) {
     }
 
     if (!data.length && !isLoading) return (
-        <div className={styles.main}>
+        <div className={styles.main} style={positionDropdown && {top: positionDropdown}}>
             <div className={styles.nameList}>
-                No found :(
+                Not found :(
             </div>
         </div>
     )

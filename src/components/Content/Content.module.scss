@@ -21,7 +21,6 @@
     padding: 0;
   }
 
-
   .weatherPanel {
     max-width: 800px;
     width: 100%;
@@ -43,7 +42,8 @@
       min-height: 100%;
     }
 
-    .currentWeather { //1 блок
+    .currentWeather {
+      //1 блок
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid;
@@ -89,7 +89,8 @@
       }
     }
 
-    .hourly { //2 блок
+    .hourly {
+      //2 блок
       border-bottom: 1px solid;
       height: 120px;
       display: flex;
@@ -135,7 +136,8 @@
       }
     }
 
-    .week { //3 блок
+    .week {
+      //3 блок
       border-bottom: 1px solid;
       display: flex;
       padding: 20px 0;
@@ -170,6 +172,10 @@
               display: none;
             }
           }
+        }
+
+        .nightTemp > div, .dayTemp> div {
+          text-align: end;
         }
 
         @include max-media(sm) {
@@ -217,7 +223,7 @@
     box-shadow: 5px 5px 15px $black;
     color: $red;
 
-    @include max-media(xs){
+    @include max-media(xs) {
       font-size: 15px;
     }
 
@@ -245,7 +251,7 @@
   }
 }
 
-@include min-media(sm){
+@include min-media(sm) {
   .lastContent {
     display: none;
   }

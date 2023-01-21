@@ -164,18 +164,19 @@ export default function Content({data, errors, loading}) {
                     <div className={styles.week}>
                         <div className={styles.leftInfoWeek}>
                             <div className={styles.day}>
-                                {[...new Array(7).keys()].map(index =>
-                                    <div key={index}
+                                {[...new Array(7).keys()].map(index => 
+                                        <div key={index}
                                          className={cs({[styles.dayOff]: moment.unix(data?.daily[index]?.dt).format('dddd') === 'Saturday' ||
                                              moment.unix(data?.daily[index]?.dt).format('dddd') === 'Sunday'
                                          })}
                                     >
                                         {currentLang === 'en' ?
-                                            moment.unix(data?.daily[index+1]?.dt).format('dddd')
+                                            moment.unix(data?.daily[index]?.dt).format('dddd')
                                             :
-                                            getDayWeek(moment.unix(data?.daily[index+1]?.dt).format('dddd'))
+                                            getDayWeek(moment.unix(data?.daily[index]?.dt).format('dddd'))
                                         }
                                     </div>
+                                    
                                 )}
                             </div>
                             <div className={styles.numMouth}>
@@ -200,7 +201,7 @@ export default function Content({data, errors, loading}) {
                             <div className={styles.nightTemp}>
                                 {[...new Array(7).keys()]
                                     .map(index =>
-                                        <div key={index}>{Math.round(data.daily[index]?.temp?.night)}&deg;</div>
+                                        <div  key={index}>{Math.round(data.daily[index]?.temp?.night)}&deg;</div>
                                     )}
                             </div>
                         </div>

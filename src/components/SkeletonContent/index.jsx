@@ -14,11 +14,11 @@ const SkeletonContent = () => {
         <div className={styles.weatherPanel}>
             <div className={styles.currentWeather}>
                 <div className={cs(styles.leftInfo, stylesSkeleton.topInfo)}>
-                    <LoadingContainer width={'250px'} margin={'0 0 5px 0'} height={'35px'}/>
-                    <LoadingContainer width={'200px'} margin={'0 0 5px 0'} height={'35px'}/>
-                    <LoadingContainer width={'200px'} height={'35px'}/>
+                    <LoadingContainer width={'250px'} margin={'0 0 5px 0'} height={'25px'}/>
+                    <LoadingContainer width={'200px'} margin={'0 0 5px 0'} height={'25px'}/>
+                    <LoadingContainer width={'200px'} height={'25px'}/>
                 </div>
-                <LoadingContainer width={isMobile ? '100px' : '150px'} height={isMobile ? '70px' : '100px'}
+                <LoadingContainer width={isMobile ? '50px' : '150px'} height={isMobile ? '40px' : '100px'}
                                   margin={isMobile && '5px 0 0 0'}/>
             </div>
             <div className={styles.hourly}>

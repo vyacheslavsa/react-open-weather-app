@@ -9,13 +9,11 @@ import CustomSearch from "../CustomSearch";
 import {ReactComponent as HomeIcon} from "../../assets/svg/home_FILL0_wght300_GRAD200_opsz48.svg";
 import {ReactComponent as SettingsIcon} from "../../assets/svg/settings_FILL0_wght300_GRAD200_opsz48.svg";
 import {ReactComponent as BurgerMenu} from "../../assets/svg/burger-menu.svg";
-import SideBar from "../../components/SideBar/index";
 
 export default function Header() {
     const dataResult = useSelector(state => state?.data?.resultSearch);
     const [searchCity, setSearchCity] = useState('');
     const [openDropDownSearch, setOpenDropDownSearch] = useState(false);
-    const [openSideBar, setOpenSideBar] = useState(false);
     const dispatch = useDispatch();
 
     const getSearchCity = async (e) => {
@@ -23,6 +21,10 @@ export default function Header() {
             await dispatch(dataSearch(searchCity))
             setOpenDropDownSearch(true)
         }
+    }
+
+    const openSideBar = () => {
+        dispatch({type: "CHANGE_STATE_SIDEBAR", payload: true})
     }
 
     return (
@@ -48,10 +50,9 @@ export default function Header() {
                 <Link to='/home'><HomeIcon/></Link>
                 <Link to='/settings'><SettingsIcon/></Link>
             </div>
-            <div className={styles.rightMenuMobile} onClick={() => setOpenSideBar(true)}>
+            <div className={styles.rightMenuMobile} onClick={() => openSideBar()}>
                 <BurgerMenu/>
             </div>
-            <SideBar state={openSideBar} onClose={() => setOpenSideBar(false)}/>
         </div>
     );
 }

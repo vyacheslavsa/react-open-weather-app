@@ -6,5 +6,10 @@
   align-items: center;
   background: $lite-blue-gradient;
   height: 100vh;
+  position: relative;
   overflow-x: hidden;
+}
+
+.openSideBar {
+  overflow: hidden;
 }

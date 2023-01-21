@@ -2,18 +2,14 @@
 
 .head {
   width: 100vw;
-  height: 90px;
-  min-height: 90px;
+  height: 80px;
+  min-height: 80px;
   display: flex;
   justify-content: space-between;
   padding: 0 50px;
   background: $side-bar-gradient;
   box-shadow: 0 0 20px $black;
-  z-index: 1;
   box-sizing: border-box;
-  position: sticky;
-  left: 0;
-  top: 0;
 
   @include max-media(xs) {
     box-shadow: none;

@@ -19,6 +19,7 @@ import {useSelector} from "react-redux";
 import {allLanguage} from "../../constans";
 import cs from "classnames";
 import SkeletonContent from "../SkeletonContent";
+import {useMediaQuery} from "react-responsive";
 
 export default function Content({data, errors, loading}) {
 
@@ -29,7 +30,8 @@ export default function Content({data, errors, loading}) {
     const storeLang = useSelector(state => state.data.interfaceLanguage);
     const localLang = JSON.parse(localStorage.getItem('CURRENT_LANG'));
     const currentLang = localLang || storeLang;
-    const currentMouth = moment.unix(data?.current?.dt).format('MMMM').toLowerCase()
+    const currentMouth = moment.unix(data?.current?.dt).format('MMMM').toLowerCase();
+    const isMobile = useMediaQuery({query: '(max-width: 575px)'})
 
     const dataCurrentLanguage = (value) => {
         let result = null;
@@ -125,16 +127,23 @@ export default function Content({data, errors, loading}) {
                             <div>{dataCurrentLanguage(currentGEO.local_names)}</div>
                             <div className={styles.descriptionWeather}>
                                 {descriptionWeather}
-                                <div className={styles.iconWeather}>
+                                {!isMobile &&
+                                    <div className={styles.iconWeather}>
                                     {currentImageWeather()}
-                                </div>
+                                </div>}
                             </div>
                         </div>
-                        <div
-                            className={styles.rightInfo}
-                            ref={tempRef}
-                        >
-                            {Math.round(data.current?.temp)}&deg;
+                        <div style={{display: 'flex'}}>
+                            <div
+                                className={styles.rightInfo}
+                                ref={tempRef}
+                            >
+                                {Math.round(data.current?.temp)}&deg;
+                            </div>
+                            {isMobile &&
+                                <div className={styles.iconWeather}>
+                                {currentImageWeather()}
+                            </div>}
                         </div>
                     </div>
                     <div className={styles.hourly}>

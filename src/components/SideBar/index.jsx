@@ -5,12 +5,13 @@ import {ReactComponent as IconBack} from "../../assets/svg/back.svg";
 import {ReactComponent as SettingsIcon} from "../../assets/svg/settings_FILL0_wght300_GRAD200_opsz48.svg";
 import {Link} from "react-router-dom";
 import {allLanguage} from "../../constans";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
-const SideBar = ({onClose, state}) => {
+const SideBar = ({open}) => {
     const currentLang = useSelector(state => state?.data?.interfaceLanguage)
     const localStoreWeather = JSON.parse(localStorage.getItem('CURRENT_LANG'));
     const lang = localStoreWeather || currentLang;
+    const dispatch = useDispatch();
 
     const dataCurrentLanguage = (value) => {
         let result = null;
@@ -21,9 +22,10 @@ const SideBar = ({onClose, state}) => {
     }
 
     return (
-        <div className={cs(styles.root, {[styles.openBar]: state})}>
+        <div className={cs(styles.root, {[styles.openBar]: open})}>
             <div className={styles.header}>
-                <div onClick={() => onClose()} className={styles.backBlock}>
+                <div onClick={() => dispatch({type: "CHANGE_STATE_SIDEBAR", payload: false})}
+                     className={styles.backBlock}>
                     <IconBack/>
                     <span>{dataCurrentLanguage(allLanguage).sideBar.back}</span>
                 </div>
@@ -37,7 +39,7 @@ const SideBar = ({onClose, state}) => {
                     {dataCurrentLanguage(allLanguage).sideBar.menu}
                 </div>
             </div>
-            <div className={styles.content} onClick={() => onClose()}>
+            <div className={styles.content} onClick={() => dispatch({type: "CHANGE_STATE_SIDEBAR", payload: false})}>
                 <Link to='/settings'>
                     <div className={styles.item}>
                         <div className={styles.itemContent}>

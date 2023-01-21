@@ -5,7 +5,8 @@ const defaultState = {//значение по умолчанию
     searchLoading: true,
     currentCity: [],
     resultSearch: [],
-    interfaceLanguage: 'en'
+    interfaceLanguage: 'en',
+    openSideBar: false
 };
 
 const allActions = {
@@ -16,7 +17,8 @@ const allActions = {
     SEARCH_LOADING: 'SEARCH_LOADING',
     GET_CITY: 'GET_CITY',
     RESULT_SEARCH: 'RESULT_SEARCH',
-    SET_LANGUAGE: 'SET_LANGUAGE'
+    SET_LANGUAGE: 'SET_LANGUAGE',
+    CHANGE_STATE_SIDEBAR: 'CHANGE_STATE_SIDEBAR'
 }
 
 //action = {type:"", payload:""} - формат объекта type - action значение ,payload - новое значение
@@ -36,6 +38,8 @@ export const reduser = (state = defaultState, action) => {
             return {...state, resultSearch: action.payload};
         case allActions.SET_LANGUAGE:
             return {...state, interfaceLanguage: action.payload};
+        case allActions.CHANGE_STATE_SIDEBAR:
+            return {...state, openSideBar: action.payload};
         default:
             return state;
     }

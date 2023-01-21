@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './SideBar.module.scss'
 import cs from "classnames";
-import {ReactComponent as IconBack} from "../../../src/image/back.svg";
-import {ReactComponent as SettingsIcon} from "../../image/settings_FILL0_wght300_GRAD200_opsz48.svg";
+import {ReactComponent as IconBack} from "../../assets/svg/back.svg";
+import {ReactComponent as SettingsIcon} from "../../assets/svg/settings_FILL0_wght300_GRAD200_opsz48.svg";
 import {Link} from "react-router-dom";
 import {allLanguage} from "../../constans";
 import {useSelector} from "react-redux";

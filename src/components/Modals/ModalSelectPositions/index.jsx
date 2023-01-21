@@ -5,7 +5,7 @@ import {dataSearch, getDataCurrentWeather} from "../../../actions/actions";
 import ButtonCustom from "../../ButtonCustom";
 import CustomSearch from "../../CustomSearch";
 import styles from './ModalSelectPositions.module.scss'
-import {ReactComponent as IconLocation} from "../../../image/locationSvg.svg";
+import {ReactComponent as IconLocation} from "../../../assets/svg/locationSvg.svg";
 import {useMediaQuery} from "react-responsive";
 
 function ModalSelectPositions({onClose, locateCity, showCity, currentCity}) {

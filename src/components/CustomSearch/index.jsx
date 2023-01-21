@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import styles from './CustoomSearch.module.scss'
-import {ReactComponent as IconDelete} from "../../image/4115230-cancel-close-cross-delete_114048.svg";
+import {ReactComponent as IconDelete} from "../../assets/svg/4115230-cancel-close-cross-delete_114048.svg";
 import Dropdown from "../DropDownSearch";
 import cs from 'classnames';
 

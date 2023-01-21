@@ -1,20 +1,20 @@
 import React, {useRef} from 'react'
 import styles from './Content.module.scss'
 import moment from "moment";
-import {ReactComponent as ImageError} from "../../image/error_FILL0_wght400_GRAD0_opsz48.svg"
-import {ReactComponent as SunnyIcon} from "../../image/sunny.svg"
-import {ReactComponent as SmallCloudyIcon} from "../../image/small_cloudy.svg"
-import {ReactComponent as CloudyIcon} from "../../image/cloudy.svg"
-import {ReactComponent as BrokeCloudsIcon} from "../../image/broken_clouds.svg"
-import {ReactComponent as RainIcon} from "../../image/rain.svg"
-import {ReactComponent as RainSunIcon} from "../../image/rain_sun.svg"
-import {ReactComponent as ThunderstormIcon} from "../../image/thunderstorm.svg"
-import {ReactComponent as SnowIcon} from "../../image/snow.svg"
-import {ReactComponent as FogIcon} from "../../image/fog.svg"
-import {ReactComponent as NightIcon} from "../../image/night.svg"
-import {ReactComponent as SmallCloudyIconNight} from "../../image/small_cloudy_night.svg"
-import {ReactComponent as CloudyIconNight} from "../../image/small_cloudy_night.svg"
-import {ReactComponent as RainMoonIcon} from "../../image/rain_night_moon.svg"
+import {ReactComponent as ImageError} from "../../assets/svg/error_FILL0_wght400_GRAD0_opsz48.svg"
+import {ReactComponent as SunnyIcon} from "../../assets/svg/sunny.svg"
+import {ReactComponent as SmallCloudyIcon} from "../../assets/svg/small_cloudy.svg"
+import {ReactComponent as CloudyIcon} from "../../assets/svg/cloudy.svg"
+import {ReactComponent as BrokeCloudsIcon} from "../../assets/svg/broken_clouds.svg"
+import {ReactComponent as RainIcon} from "../../assets/svg/rain.svg"
+import {ReactComponent as RainSunIcon} from "../../assets/svg/rain_sun.svg"
+import {ReactComponent as ThunderstormIcon} from "../../assets/svg/thunderstorm.svg"
+import {ReactComponent as SnowIcon} from "../../assets/svg/snow.svg"
+import {ReactComponent as FogIcon} from "../../assets/svg/fog.svg"
+import {ReactComponent as NightIcon} from "../../assets/svg/night.svg"
+import {ReactComponent as SmallCloudyIconNight} from "../../assets/svg/small_cloudy_night.svg"
+import {ReactComponent as CloudyIconNight} from "../../assets/svg/small_cloudy_night.svg"
+import {ReactComponent as RainMoonIcon} from "../../assets/svg/rain_night_moon.svg"
 import {useSelector} from "react-redux";
 import {allLanguage} from "../../constans";
 import cs from "classnames";

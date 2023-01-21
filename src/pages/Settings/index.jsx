@@ -1,7 +1,7 @@
 import React from 'react'
 import MainLoyout from "../../components/MainLoyout";
 import styles from './Settings.module.scss'
-import {ReactComponent as IconEarth} from "../../image/language_FILL0_wght400_GRAD0_opsz48.svg";
+import {ReactComponent as IconEarth} from "../../assets/svg/language_FILL0_wght400_GRAD0_opsz48.svg";
 import Dropdown from "../../components/Dropdown";
 
 function Settings() {

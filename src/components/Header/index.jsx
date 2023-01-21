@@ -4,11 +4,11 @@ import {Link} from "react-router-dom";
 import {useState} from "react";
 import {dataSearch} from "../../actions/actions";
 import {useDispatch, useSelector} from "react-redux";
-import {ReactComponent as IconCloud} from "../../image/logo-weather.svg";
+import {ReactComponent as IconCloud} from "../../assets/svg/logo-weather.svg";
 import CustomSearch from "../CustomSearch";
-import {ReactComponent as HomeIcon} from "../../image/home_FILL0_wght300_GRAD200_opsz48.svg";
-import {ReactComponent as SettingsIcon} from "../../image/settings_FILL0_wght300_GRAD200_opsz48.svg";
-import {ReactComponent as BurgerMenu} from "../../image/burger-menu.svg";
+import {ReactComponent as HomeIcon} from "../../assets/svg/home_FILL0_wght300_GRAD200_opsz48.svg";
+import {ReactComponent as SettingsIcon} from "../../assets/svg/settings_FILL0_wght300_GRAD200_opsz48.svg";
+import {ReactComponent as BurgerMenu} from "../../assets/svg/burger-menu.svg";
 import SideBar from "../../components/SideBar/index";
 
 export default function Header() {

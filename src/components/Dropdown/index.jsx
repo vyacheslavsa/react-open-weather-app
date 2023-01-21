@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styles from "../../components/Dropdown/Dropdown.module.scss";
-import {ReactComponent as MoreInfo} from "../../image/expand_more_FILL0_wght400_GRAD0_opsz48.svg";
+import {ReactComponent as MoreInfo} from "../../assets/svg/expand_more_FILL0_wght400_GRAD0_opsz48.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {setLanguage} from "../../redusers/reduser";
 import {allLanguage} from "../../constans";

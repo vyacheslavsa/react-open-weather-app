@@ -171,7 +171,6 @@
         }
 
         .numMouth {
-          min-width: 140px;
 
           @include max-media(sm) {
             min-width: auto;
@@ -183,7 +182,7 @@
         }
 
         .nightTemp > div, .dayTemp > div {
-          text-align: end;
+          text-align: center;
         }
 
         @include max-media(sm) {

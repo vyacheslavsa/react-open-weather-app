@@ -28,7 +28,7 @@ export default function Header() {
     }
 
     return (
-        <div className={styles.head}>
+        <header className={styles.head}>
             <div className={styles.logo}>
                 <Link to='/home'><IconCloud/></Link>
                 <div className={styles.nameApp}>Your Weather</div>
@@ -53,6 +53,6 @@ export default function Header() {
             <div className={styles.rightMenuMobile} onClick={() => openSideBar()}>
                 <BurgerMenu/>
             </div>
-        </div>
+        </header>
     );
 }

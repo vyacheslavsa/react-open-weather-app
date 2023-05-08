@@ -30,9 +30,6 @@
     color: $white;
     border-radius: 20px;
     box-shadow: 0 0 50px $black;
-    animation-name: one;
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
     background: $blue-gradient;
 
     @include max-media(xs) {

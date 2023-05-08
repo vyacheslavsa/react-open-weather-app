@@ -33,8 +33,6 @@ export default function Content({ data, errors, loading }) {
   const currentMouth = moment.unix(data?.current?.dt).format("MMMM").toLowerCase();
   const isMobile = useMediaQuery({ query: "(max-width: 575px)" });
 
-  console.log(currentLang, "currentLang");
-
   const dataCurrentLanguage = (value) => {
     let result = null;
     for (const key in value) {

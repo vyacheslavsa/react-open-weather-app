@@ -64,21 +64,21 @@
     a:first-child {
       margin-right: 30px;
 
-      &:hover {
-        transform: scale(1.2, 1.2);
-      }
+      // &:hover {
+      //   transform: scale(1.2, 1.2);
+      // }
     }
 
-    a:last-child {
-      transform: rotate(0deg);
-    }
+    // a:last-child {
+    //   transform: rotate(0deg);
+    // }
 
-    & a:hover {
-      &:last-child {
-        transition: 0.5s;
-        transform: rotate(27deg);
-      }
-    }
+    // & a:hover {
+    //   &:last-child {
+    //     transition: 0.5s;
+    //     transform: rotate(27deg);
+    //   }
+    // }
 
     & > a {
       cursor: pointer;
